@@ -1,0 +1,68 @@
+.glyph {
+  --size: 12px;
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+.glyph[data-state="done"] {
+  background: var(--ok);
+  color: var(--surface);
+  padding: 1px;
+}
+.glyph[data-state="works"] {
+  background: var(--ok);
+  box-shadow:
+    inset 0 0 0 2.5px var(--ok),
+    inset 0 0 0 4px var(--surface);
+}
+.glyph[data-state="built"] {
+  border: 2px solid var(--warn);
+}
+.glyph[data-state="planned"] {
+  border: 1.5px dashed var(--muted);
+  opacity: 0.8;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: 600 11.5px var(--font-mono);
+  letter-spacing: 0.02em;
+  border-radius: 999px;
+  padding-block: 3px;
+  padding-inline: 6px 10px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  white-space: nowrap;
+}
+.badge[data-state="done"],
+.badge[data-state="works"] {
+  border-color: color-mix(in oklab, var(--ok) 45%, transparent);
+  background: color-mix(in oklab, var(--ok) 10%, var(--surface));
+}
+.badge[data-state="built"] {
+  border-color: color-mix(in oklab, var(--warn) 45%, transparent);
+  background: color-mix(in oklab, var(--warn) 9%, var(--surface));
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font: 11.5px var(--font-mono);
+  color: var(--muted);
+}
+.legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}

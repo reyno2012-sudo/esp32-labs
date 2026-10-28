@@ -1,0 +1,4 @@
+/* A control-bar item that takes its own row. */
+.full {
+  flex-basis: 100%;
+}

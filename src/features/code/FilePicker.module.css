@@ -1,0 +1,130 @@
+.picker {
+  position: relative;
+}
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 600 13px var(--font-mono);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  background: var(--surface);
+  color: var(--ink);
+  padding: 6px 10px;
+  min-height: 38px;
+  max-width: 62vw;
+  cursor: pointer;
+}
+.toggle:hover {
+  border-color: var(--copper);
+}
+.current {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.icon {
+  color: var(--copper);
+}
+.count {
+  color: var(--muted);
+  font-weight: 400;
+}
+.list {
+  position: absolute;
+  z-index: 5;
+  top: calc(100% + 6px);
+  inset-inline-start: 0;
+  width: min(360px, calc(100vw - 2 * var(--gutter)));
+  max-height: min(60dvh, 520px);
+  overflow: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  box-shadow: 0 14px 40px color-mix(in srgb, var(--ink) 20%, transparent);
+  padding: 8px;
+  animation: drop 0.2s ease;
+}
+@keyframes drop {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+.list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.list li button {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2px 8px;
+  width: 100%;
+  text-align: start;
+  border: 0;
+  border-radius: var(--radius-s);
+  background: none;
+  color: var(--ink);
+  padding: 8px;
+  cursor: pointer;
+}
+.list li button:hover {
+  background: var(--bg);
+}
+.list li button[aria-current="true"] {
+  background: var(--copper-soft);
+}
+.name {
+  font: 600 13px var(--font-mono);
+  overflow-wrap: anywhere;
+}
+.meta {
+  font: 11.5px var(--font-mono);
+  color: var(--muted);
+  align-self: center;
+}
+.bar {
+  grid-column: 1 / -1;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--line);
+  overflow: hidden;
+}
+.bar span {
+  display: block;
+  height: 100%;
+  background: var(--copper);
+}
+.group {
+  margin: 4px 8px 4px;
+  font: 600 11px var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.groupToggle {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  border: 0;
+  border-top: 1px solid var(--line);
+  background: none;
+  color: var(--muted);
+  text-align: start;
+  font: 600 11.5px var(--font-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 10px 8px 4px;
+  cursor: pointer;
+}
+.groupNote {
+  margin: 0 8px 6px;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+@media (prefers-reduced-motion: reduce) {
+  .list {
+    animation: none;
+  }
+}

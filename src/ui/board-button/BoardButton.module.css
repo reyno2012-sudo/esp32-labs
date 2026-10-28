@@ -1,0 +1,32 @@
+.bootBtn {
+  font: 700 13px var(--font-mono);
+  letter-spacing: 0.06em;
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 18px;
+  min-height: 38px;
+  cursor: pointer;
+  background: var(--pcb);
+  color: var(--silk);
+  box-shadow: 0 3px 0 var(--pcb-edge);
+  transition:
+    transform 0.08s,
+    box-shadow 0.08s;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.bootBtn:active,
+.bootBtn.down {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--pcb-edge);
+}
+.bootBtn:focus-visible {
+  outline: 2px solid var(--copper);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bootBtn {
+    transition: none;
+  }
+}

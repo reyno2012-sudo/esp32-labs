@@ -1,0 +1,26 @@
+.pins {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.pins li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-block: 2px;
+  padding-inline: 2px 10px;
+  border-radius: 6px;
+  border: 1px solid color-mix(in oklab, var(--pin) 40%, var(--line));
+  background: color-mix(in oklab, var(--pin) 8%, var(--surface));
+  font-size: 13px;
+}
+.pin {
+  font: 700 11.5px var(--font-mono);
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: var(--pin);
+  color: var(--surface);
+}

@@ -1,0 +1,82 @@
+name: Lab proposal
+description: Suggest a new lab, a new theme, or a better way to teach an existing one.
+title: "[Lab]: "
+labels: ["enhancement", "new lab"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A lab is one thing a beginner builds on the bench in an evening, with an ESP32-S3 DevKitC-1 and cheap parts. It has a firmware in [esp-labs](https://github.com/agharsallah/esp-labs) and a lesson here. Rough ideas are welcome: fill in what you know and leave the rest.
+  - type: dropdown
+    id: theme
+    attributes:
+      label: Theme
+      options:
+        - Intro
+        - Display & input
+        - Wi-Fi
+        - RFID & NFC
+        - Sensors (planned theme)
+        - Bluetooth LE
+        - Sound
+        - A new theme (describe it below)
+    validations:
+      required: true
+  - type: input
+    id: title
+    attributes:
+      label: Working title
+      placeholder: "Echo: hear yourself twice"
+    validations:
+      required: true
+  - type: textarea
+    id: build
+    attributes:
+      label: What does the learner build?
+      description: What happens on the bench when it works. One or two sentences.
+      placeholder: Record a word with the mic, then play it back through the speaker with an echo you tune from the serial monitor.
+    validations:
+      required: true
+  - type: textarea
+    id: learn
+    attributes:
+      label: What do they learn?
+      description: Two to four new ideas at most. These become the "You will learn" chips.
+      placeholder: |
+        - ring buffers
+        - I2S output
+        - mixing two signals
+    validations:
+      required: true
+  - type: textarea
+    id: parts
+    attributes:
+      label: Parts and wiring
+      description: Everything beyond the board, with a rough price or a link, and the pins if you know them.
+      placeholder: |
+        - INMP441 microphone (as in S1)
+        - MAX98357A amplifier + 4 Ω speaker (as in S7)
+  - type: dropdown
+    id: firmware
+    attributes:
+      label: Firmware
+      options:
+        - Not written yet
+        - In progress
+        - Already in esp-labs
+    validations:
+      required: true
+  - type: textarea
+    id: simulator
+    attributes:
+      label: What should the simulator show?
+      description: Optional. What a learner sees in the browser before they build it, and what they can click or type.
+  - type: checkboxes
+    id: help
+    attributes:
+      label: Can you help build it?
+      description: Not required. See [CONTRIBUTING.md](https://github.com/agharsallah/esp-labs-web/blob/main/CONTRIBUTING.md#add-a-lab) for how a lab comes together.
+      options:
+        - label: I can write or test the firmware
+        - label: I can write the lesson text
+        - label: I can build the simulator

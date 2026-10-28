@@ -1,0 +1,105 @@
+.next {
+  display: grid;
+  gap: 10px;
+}
+.primary {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 2px 14px;
+  padding: 16px 18px;
+  border-radius: var(--radius-l);
+  background: var(--track);
+  color: var(--surface);
+  text-decoration: none;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: 0 12px 28px -18px var(--track);
+  transition: transform 0.2s ease;
+}
+/* A faint PCB grid on the button, in its own colour. */
+.primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(
+    circle,
+    color-mix(in oklab, var(--surface) 28%, transparent) 1.5px,
+    transparent 2px
+  );
+  background-size: 16px 16px;
+  mask-image: linear-gradient(calc(90deg * var(--dir)), transparent 30%, var(--ink));
+}
+.primary:hover {
+  transform: translateY(-2px);
+}
+.primary > svg:last-child {
+  grid-row: 1 / span 2;
+  grid-column: 3;
+  transition: transform 0.2s ease;
+}
+.primary:hover > svg:last-child {
+  transform: translateX(calc(4px * var(--dir)));
+}
+/* The next lesson's part, on a light plate so its colours read on the theme colour. */
+.part {
+  grid-row: 1 / span 2;
+  grid-column: 1;
+  padding: 4px;
+  border-radius: 16px;
+  background: color-mix(in oklab, var(--surface) 88%, transparent);
+}
+.kicker,
+.title {
+  grid-column: 2;
+}
+.kicker {
+  font: 600 11px var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+.title {
+  font: 800 20px / 1.2 var(--font-display);
+  font-stretch: 110%;
+}
+.title b {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  margin-inline-end: 6px;
+}
+.minor {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+}
+.minor a,
+.minor button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  font: 600 12.5px var(--font-mono);
+  text-decoration: none;
+  cursor: pointer;
+}
+.minor a:hover,
+.minor button:hover {
+  border-color: var(--track);
+}
+
+/* Hover lifts and nudges are decoration: still for anyone who asks for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  .primary:hover,
+  .primary:hover > svg:last-child {
+    transform: none;
+  }
+}

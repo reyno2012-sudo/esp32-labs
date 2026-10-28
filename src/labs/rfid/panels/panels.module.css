@@ -1,0 +1,425 @@
+/* The RFID explainer panels: SPI transfer, anticollision walk, access bits, value block, memory rows. */
+.wd {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+}
+.count {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+  margin-inline-start: auto;
+  font-variant-numeric: tabular-nums;
+}
+
+/* A step's title and explanation, with a colour swatch. */
+.cap {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 2px 12px;
+  align-items: baseline;
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 10px 14px;
+  min-height: 64px;
+}
+.cap .sw {
+  grid-row: span 2;
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  align-self: center;
+  background: var(--sw, var(--copper));
+}
+.cap strong {
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+.cap > span:last-child {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Logic analyser */
+.la {
+  background: var(--term-bg);
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.laScroll {
+  overflow-x: auto;
+}
+.la svg {
+  width: 100%;
+  min-width: 520px;
+  height: auto;
+  display: block;
+}
+.la p {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--term-ink);
+  min-height: 2.6em;
+}
+.la .k {
+  color: var(--term-dim);
+}
+.laText {
+  font-family: var(--font-mono);
+}
+.ctl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  align-items: center;
+}
+.select {
+  font: 12.5px var(--font-mono);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 4px 6px;
+  min-height: 34px;
+  background: var(--surface);
+  color: var(--ink);
+  max-width: 100%;
+}
+
+/* Anticollision */
+.inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  align-items: end;
+}
+.inputs label {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font: 600 11px var(--font-mono);
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.field {
+  font: 16px var(--font-mono);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 5px 8px;
+  background: var(--surface);
+  color: var(--ink);
+  width: 14ch;
+}
+@media (min-width: 560px) {
+  .field {
+    font-size: 13px;
+  }
+}
+.grid {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 6px 10px;
+  align-items: center;
+  overflow-x: auto;
+}
+.acRow {
+  display: contents;
+}
+.acName {
+  font: 600 12px var(--font-mono);
+  white-space: nowrap;
+}
+.acBits {
+  display: grid;
+  grid-template-columns: repeat(32, minmax(12px, 1fr));
+  gap: 2px;
+  min-width: 430px;
+}
+.acBits i {
+  font: 600 10px var(--font-mono);
+  font-style: normal;
+  text-align: center;
+  padding: 3px 0;
+  border-radius: 3px;
+  background: var(--bg);
+  color: var(--muted);
+  border: 1px solid transparent;
+  transition:
+    background 0.25s,
+    color 0.25s,
+    opacity 0.25s;
+}
+.acBits i.sent {
+  background: var(--copper-soft);
+  color: var(--ink);
+}
+.acBits i.got {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--line);
+}
+.acBits i.coll {
+  background: var(--danger);
+  color: var(--surface);
+}
+.acBits i.pick {
+  background: var(--copper);
+  color: var(--surface);
+}
+.acBits i.byte {
+  margin-inline-start: 4px;
+}
+.silent .acBits,
+.silent .acName {
+  opacity: 0.3;
+}
+.tree {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.tree .edge {
+  stroke: var(--line);
+  stroke-width: 2;
+  fill: none;
+}
+.tree .edge.on {
+  stroke: var(--copper);
+  stroke-width: 3;
+}
+.tree .node {
+  fill: var(--surface);
+  stroke: var(--muted);
+}
+.tree .leaf {
+  font: 600 11px var(--font-mono);
+  fill: var(--ink);
+}
+.tree .tk {
+  font: 10.5px var(--font-mono);
+  fill: var(--muted);
+}
+
+/* Access bits */
+.tableScroll {
+  overflow-x: auto;
+}
+.abTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+.abTable th,
+.abTable td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--line);
+  text-align: start;
+  vertical-align: middle;
+}
+.abTable th {
+  font: 600 11px var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.abTable td.c {
+  text-align: center;
+}
+.abTable input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--copper);
+}
+.mono {
+  font-family: var(--font-mono);
+}
+.abBytes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.abByte {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px;
+  background: var(--bg);
+  min-width: 0;
+}
+.abByte b {
+  font: 600 11px var(--font-mono);
+  color: var(--muted);
+  display: block;
+}
+.abByte .hex {
+  font: 700 20px var(--font-mono);
+}
+.abByte .bits {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 2px;
+  margin-top: 4px;
+}
+.abByte .bits i {
+  font: 600 10px var(--font-mono);
+  font-style: normal;
+  text-align: center;
+  border-radius: 3px;
+  padding: 2px 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.abByte .bits i.inv {
+  border-style: dashed;
+  color: var(--muted);
+}
+.abByte .bits i.hl {
+  background: var(--copper);
+  color: var(--surface);
+  border-color: var(--copper);
+}
+.abByte small {
+  display: block;
+  font: 10.5px var(--font-mono);
+  color: var(--muted);
+  margin-top: 4px;
+}
+.warnBox {
+  border-inline-start: 3px solid var(--danger);
+  padding: 6px 10px;
+  font-size: 13.5px;
+  background: var(--bg);
+  border-radius: 0;
+  border-start-end-radius: 6px;
+  border-end-end-radius: 6px;
+}
+
+/* Value block */
+.memScroll {
+  overflow-x: auto;
+}
+.vb {
+  display: grid;
+  grid-template-columns: repeat(16, minmax(0, 1fr));
+  gap: 3px;
+  min-width: 420px;
+}
+.vb div {
+  font: 600 11px var(--font-mono);
+  text-align: center;
+  padding: 6px 0 4px;
+  border-radius: 4px;
+  color: var(--surface);
+}
+.vb div small {
+  display: block;
+  font-size: 9px;
+  font-weight: 400;
+  opacity: 0.85;
+}
+.vb .v {
+  background: var(--w-sda);
+}
+.vb .nv {
+  background: var(--muted);
+}
+.vb .a {
+  background: var(--copper);
+}
+.vb .na {
+  background: var(--gnd);
+}
+.vb .changed {
+  outline: 2px solid var(--copper);
+}
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  font: 11.5px var(--font-mono);
+  color: var(--muted);
+  margin: 0;
+}
+.legend i {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  margin-inline-end: 5px;
+  vertical-align: -1px;
+  background: var(--key);
+}
+
+/* Memory rows (R4's 3D panel) */
+.memSide {
+  display: grid;
+  gap: 6px;
+}
+.memRow {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  font: 12px var(--font-mono);
+}
+.memRow > b {
+  color: var(--muted);
+  font-weight: 600;
+  text-align: end;
+}
+.memBytes {
+  display: grid;
+  grid-template-columns: repeat(16, minmax(18px, 1fr));
+  gap: 2px;
+  min-width: 360px;
+}
+.memBytes i {
+  font-style: normal;
+  text-align: center;
+  padding: 2px 0;
+  border-radius: 3px;
+  background: var(--bg);
+  font-size: 11px;
+}
+.memBytes i.ka {
+  background: var(--danger);
+  color: var(--surface);
+}
+.memBytes i.ab {
+  background: var(--copper);
+  color: var(--surface);
+}
+.memBytes i.ud {
+  background: var(--gnd);
+  color: var(--surface);
+}
+.memBytes i.kb,
+.memBytes i.val {
+  background: var(--w-sda);
+  color: var(--surface);
+}
+.memBytes i.uid {
+  background: var(--w-cs);
+  color: var(--surface);
+}
+.memBytes i.txt {
+  background: var(--ok);
+  color: var(--surface);
+}
+.alignEnd {
+  align-items: flex-end;
+}
+.treeScroll {
+  overflow-x: auto;
+}
+.treeScroll .tree {
+  min-width: 480px;
+}

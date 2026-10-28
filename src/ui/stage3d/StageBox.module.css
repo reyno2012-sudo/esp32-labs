@@ -1,0 +1,143 @@
+.stage {
+  position: relative;
+  background: radial-gradient(ellipse at 50% 35%, var(--surface), var(--bg));
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  max-width: 100%;
+  touch-action: pan-y;
+  cursor: grab;
+}
+.stage:active {
+  cursor: grabbing;
+}
+.view {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.stage canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.labels {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.labels span {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  font: 600 11px var(--font-mono);
+  color: var(--ink);
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 1px 6px;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+.labels span::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 1px;
+  height: 10px;
+  background: var(--muted);
+}
+.load {
+  position: absolute;
+  inset: auto 0 12px;
+  text-align: center;
+  font: 12px var(--font-mono);
+  color: var(--muted);
+  margin: 0;
+  padding: 0 12px;
+}
+.hint {
+  position: absolute;
+  top: 8px;
+  inset-inline-end: 10px;
+  font: 11px var(--font-mono);
+  color: var(--muted);
+  margin: 0;
+}
+
+/* The toolbar: a small pill at the bottom, like a map's controls. */
+.tools {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: color-mix(in oklab, var(--surface) 90%, transparent);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 16px -10px var(--ink);
+}
+.tools button {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+.tools button:hover {
+  background: var(--bg);
+}
+.sep {
+  width: 1px;
+  height: 18px;
+  background: var(--line);
+  margin: 0 2px;
+}
+.stage[data-status="ready"] .load {
+  display: none;
+}
+
+/* Leaders and hotspots, drawn by the stage into an svg of its own (global class: it is not
+   rendered by React, so it can't carry a module class name). */
+.labels :global(.stage-leaders) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.labels :global(.stage-leaders) path {
+  fill: none;
+  stroke: var(--hotspot);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+  opacity: 0.7;
+  transition:
+    opacity 0.2s ease,
+    stroke-width 0.2s ease;
+}
+.labels :global(.stage-leaders) circle {
+  fill: var(--surface);
+  stroke: var(--hotspot);
+  stroke-width: 3;
+  transition: r 0.2s ease;
+}
+.labels :global(.stage-leaders) [data-on="true"] {
+  opacity: 1;
+  stroke-width: 2.5;
+  stroke-dasharray: none;
+}
+.labels :global(.stage-leaders) circle[data-on="true"] {
+  fill: var(--hotspot);
+  r: 7;
+}

@@ -1,0 +1,114 @@
+/* Each step is a pad on a short trace: the trace fills in as you tick. */
+.check {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  counter-reset: s;
+}
+.check li {
+  counter-increment: s;
+  position: relative;
+}
+.check li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: 21px;
+  top: 34px;
+  bottom: -8px;
+  width: 2px;
+  background: var(--line);
+}
+.check li:has(input:checked):not(:last-child)::after {
+  background: var(--ok);
+}
+.check label {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  padding-block: 8px;
+  padding-inline: 7px 8px;
+  border-radius: var(--radius-m);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.check label:hover {
+  background: var(--bg);
+}
+/* The real checkbox, drawn as a numbered pad that turns into a tick. */
+.check input {
+  appearance: none;
+  margin: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid var(--line);
+  background: var(--surface);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+.check input::before {
+  content: counter(s, decimal-leading-zero);
+  font: 600 11.5px var(--font-mono);
+  color: var(--muted);
+}
+.check input:hover {
+  border-color: var(--ok);
+}
+.check input:checked {
+  background: var(--ok);
+  border-color: var(--ok);
+}
+.check input:checked::before {
+  content: "";
+  width: 10px;
+  height: 6px;
+  border-inline-start: 2.5px solid var(--surface);
+  border-bottom: 2.5px solid var(--surface);
+  transform: translateY(-2px) rotate(-45deg);
+}
+.check input:active {
+  transform: scale(0.92);
+}
+.check span {
+  min-width: 0;
+  padding-top: 4px;
+}
+.check input:checked + span {
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--line);
+}
+.status {
+  margin: 12px 0 0;
+  font: 12.5px var(--font-mono);
+  color: var(--muted);
+}
+.status[data-complete] {
+  padding: 10px 14px;
+  border-radius: var(--radius-m);
+  background: color-mix(in oklab, var(--ok) 12%, var(--surface));
+  border: 1px solid color-mix(in oklab, var(--ok) 40%, transparent);
+  color: var(--ink);
+  font-weight: 600;
+}
+.note {
+  font-size: 14px;
+  color: var(--muted);
+  border-inline-start: 3px solid var(--warn);
+  background: color-mix(in oklab, var(--warn) 6%, transparent);
+  border-radius: 0;
+  border-start-end-radius: var(--radius-s);
+  border-end-end-radius: var(--radius-s);
+  padding: 8px 12px;
+  margin: 12px 0 0;
+}

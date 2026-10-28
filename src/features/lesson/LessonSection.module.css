@@ -1,0 +1,61 @@
+/* The via sits on the sheet's trace (LessonPage.module.css): --spine-gap back from the content. */
+.section {
+  position: relative;
+  min-width: 0;
+  scroll-margin-top: var(--dock-clearance, 132px);
+}
+.section:focus {
+  outline: none;
+}
+.head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.via {
+  position: absolute;
+  top: -4px;
+  inset-inline-start: calc(var(--spine-gap) * -1 - 16px);
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid color-mix(in oklab, var(--track) 45%, var(--line));
+  color: var(--muted);
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.section[data-active] .via {
+  background: var(--track);
+  border-color: var(--track);
+  color: var(--surface);
+  box-shadow: 0 0 0 5px color-mix(in oklab, var(--track) 20%, transparent);
+}
+.num {
+  font: 600 12px var(--font-mono);
+  color: var(--track);
+  letter-spacing: 0.04em;
+}
+.title {
+  margin: 0;
+  font: 750 18px / 1.2 var(--font-display);
+  font-stretch: 108%;
+  letter-spacing: -0.005em;
+}
+@media (min-width: 560px) {
+  .title {
+    font-size: 19px;
+  }
+}
+.intro {
+  margin: -4px 0 14px;
+  color: var(--muted);
+  max-width: 72ch;
+  font-size: 14px;
+}

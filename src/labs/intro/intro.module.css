@@ -1,0 +1,37 @@
+.sim {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.breadboard {
+  background: var(--bg);
+  border-radius: var(--radius-m);
+  padding: 8px;
+}
+.breadboard svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  fill: var(--muted);
+}
+.strong {
+  fill: var(--ink);
+  font-weight: 600;
+}
+.ledLine {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.swatch {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--silk-dim);
+  box-shadow: 0 0 0 2px var(--pcb-edge);
+}

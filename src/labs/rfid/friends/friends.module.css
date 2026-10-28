@@ -1,0 +1,64 @@
+/* R8: the cast and the friends preview. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+  gap: 8px;
+}
+@media (max-width: 420px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.card {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 8px 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--scope-paper);
+  color: var(--scope-ink);
+  cursor: pointer;
+  font: inherit;
+  min-width: 0;
+}
+.card canvas {
+  width: 100%;
+  max-width: 120px;
+  height: auto;
+}
+.card small {
+  color: var(--scope-muted);
+  font-size: 11.5px;
+  text-align: center;
+}
+.card[aria-pressed="true"] {
+  border-color: var(--copper);
+  box-shadow: 0 0 0 2px var(--copper);
+}
+.out {
+  margin: 10px 0 0;
+  font-size: 14px;
+}
+.sim {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+.move {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font: 600 12.5px var(--font-mono);
+}
+.move select {
+  font: 12.5px var(--font-mono);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 4px 6px;
+  min-height: 34px;
+  background: var(--surface);
+  color: var(--ink);
+}

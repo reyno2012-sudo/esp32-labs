@@ -1,0 +1,228 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.eyebrow {
+  margin: 0;
+  font: 600 12px var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.title {
+  margin: 0;
+  font: 800 clamp(24px, 4vw, 32px) / 1.1 var(--font-display);
+}
+.lead {
+  margin: 0;
+  color: var(--muted);
+}
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  padding: 16px;
+}
+.h {
+  margin: 0;
+  font: 600 12px var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.levels {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+}
+@media (min-width: 720px) {
+  .levels {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.level {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: start;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+.level:hover {
+  border-color: var(--copper);
+}
+.level[aria-checked="true"] {
+  border: 2px solid var(--copper);
+  padding: 13px;
+  background: var(--copper-soft);
+}
+.steps {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 4px;
+}
+.steps span {
+  width: 18px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--line);
+}
+.steps span[data-on] {
+  background: var(--copper);
+}
+.levelName {
+  font: 750 17px var(--font-display);
+}
+.levelBlurb {
+  font-size: 14px;
+  color: var(--muted);
+}
+.level[aria-checked="true"] .levelBlurb {
+  color: var(--ink);
+}
+.columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+@media (min-width: 900px) {
+  .columns {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+  }
+  .preview {
+    position: sticky;
+    top: 16px;
+  }
+}
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.fieldLabel {
+  font-weight: 600;
+}
+.fieldHint {
+  font-size: 13.5px;
+  color: var(--muted);
+  margin: -4px 0 0;
+}
+.preview {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.previewLabel {
+  margin: 0;
+  font: 600 12px var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.previewCode {
+  height: 340px;
+}
+.stats {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+}
+.resets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.confirm {
+  display: inline-flex;
+  gap: 6px;
+}
+.danger,
+.cancel {
+  font: 600 12.5px var(--font-mono);
+  border-radius: var(--radius-s);
+  padding: 8px 12px;
+  min-height: 38px;
+  cursor: pointer;
+}
+.danger {
+  background: var(--danger);
+  border: 1px solid var(--danger);
+  color: var(--surface);
+}
+.cancel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+
+.views {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+}
+@media (min-width: 560px) {
+  .views {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+/* A thumbnail of each reader layout: toolbar, code, panel, bottom bar. */
+.sketch {
+  display: grid;
+  grid-template: 8px 46px 10px / 2fr 1fr;
+  gap: 4px;
+  width: 132px;
+  margin-bottom: 6px;
+}
+.sketch > span {
+  border-radius: 3px;
+  background: var(--line);
+}
+.sketch .sketchBar {
+  grid-column: 1 / -1;
+}
+.sketch .sketchCode {
+  background: var(--code-bg);
+  border: 1px solid var(--line);
+}
+.sketch .sketchSide {
+  background: var(--copper-soft);
+}
+.sketch .sketchFoot {
+  grid-column: 1 / -1;
+}
+.sketch[data-view="simple"] .sketchBar {
+  width: 45%;
+}
+.sketch[data-view="simple"] .sketchFoot {
+  justify-self: end;
+  width: 40%;
+  background: var(--copper);
+}
+.sketch[data-view="full"] .sketchFoot {
+  background: repeating-linear-gradient(90deg, var(--line) 0 10px, transparent 10px 14px);
+}

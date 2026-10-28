@@ -1,0 +1,42 @@
+.path {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 2;
+  stroke-dasharray: 4 5;
+}
+.stage {
+  cursor: pointer;
+}
+.stage:focus {
+  outline: none;
+}
+.stage:focus-visible .card {
+  stroke: var(--copper);
+  stroke-width: 2.5;
+}
+.card {
+  fill: var(--surface);
+  stroke: var(--line);
+  stroke-width: 1.5;
+}
+.card[data-on="true"] {
+  stroke: var(--ble);
+}
+.id {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  fill: var(--ble);
+}
+.title {
+  font-size: 13px;
+  font-weight: 600;
+  fill: var(--ink);
+}
+.role {
+  font-size: 11px;
+  fill: var(--muted);
+}
+.dot {
+  fill: var(--ble);
+}

@@ -1,0 +1,6 @@
+.caption {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--muted);
+  margin: 0;
+}

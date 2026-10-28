@@ -1,0 +1,27 @@
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.heading {
+  margin: 0;
+  font: 750 20px / 1.2 var(--font-display);
+}
+.id {
+  font: 600 14px var(--font-mono);
+  color: var(--copper);
+  margin-inline-end: 4px;
+}
+.none {
+  color: var(--muted);
+  margin: 0;
+  padding: 24px 0;
+}

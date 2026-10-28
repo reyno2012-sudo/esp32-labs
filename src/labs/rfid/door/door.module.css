@@ -1,0 +1,275 @@
+/* R7: the rules panel and the copy panel. */
+.rulesUi {
+  display: grid;
+  gap: 12px;
+}
+.rulesForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: center;
+  font-size: 14px;
+}
+.rulesForm label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+}
+.rulesForm select {
+  font: 13px var(--font-mono);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 3px 6px;
+  min-height: 32px;
+  background: var(--surface);
+  color: var(--ink);
+}
+.rulesForm input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--copper);
+}
+.rulesForm input[type="range"] {
+  accent-color: var(--copper);
+  max-width: 160px;
+}
+.rulesForm output {
+  font: 600 12px var(--font-mono);
+  min-width: 3.5em;
+}
+.rulesList {
+  margin: 0;
+  padding-inline-start: 24px;
+  display: grid;
+  gap: 4px;
+  font-size: 14px;
+}
+.rulesList li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2px 12px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+}
+.rulesList li b {
+  font: 600 12px var(--font-mono);
+}
+.rulesList li.pass b {
+  color: var(--ok);
+}
+.rulesList li.stop {
+  border-color: var(--danger);
+  box-shadow: inset 4px 0 0 var(--danger);
+}
+.rulesList li.stop b {
+  color: var(--danger);
+}
+.rulesList li.skip {
+  opacity: 0.45;
+}
+.rulesList li.open {
+  border-color: var(--ok);
+  box-shadow: inset 4px 0 0 var(--ok);
+}
+.rulesList li.open b {
+  color: var(--ok);
+}
+.verdict {
+  margin: 0;
+  font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.now {
+  font: 600 12px var(--font-mono);
+  padding: 2px 9px;
+  border-radius: 999px;
+  color: var(--surface);
+  background: var(--ok);
+}
+.verdict .now.good {
+  background: var(--ok);
+}
+.verdict .now.critical {
+  background: var(--danger);
+}
+
+/* What a copy moves */
+.cpUi {
+  display: grid;
+  gap: 12px;
+}
+.cpCtl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  align-items: center;
+  font-size: 14px;
+}
+.cpCtl label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+}
+.cpCtl input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--copper);
+}
+.cpCards {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+}
+.cpArrow {
+  font: 600 20px var(--font-mono);
+  color: var(--w-cs);
+}
+.cpCard {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px;
+  background: var(--bg);
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+.cpCard h4 {
+  margin: 0 0 4px;
+  font: 600 13px var(--font-mono);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  align-items: baseline;
+}
+.cpCard h4 small {
+  font-weight: 400;
+  color: var(--muted);
+}
+.cpRow {
+  display: grid;
+  grid-template-columns: 26px repeat(4, minmax(0, 1fr));
+  gap: 3px;
+  align-items: stretch;
+}
+.cpRow > span:first-child {
+  font: 600 10px var(--font-mono);
+  color: var(--muted);
+  align-self: center;
+}
+.cpCell {
+  font: 10.5px/1.25 var(--font-mono);
+  padding: 3px 4px;
+  border-radius: 5px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  overflow-wrap: anywhere;
+  min-width: 0;
+  transition:
+    background 0.25s,
+    box-shadow 0.25s;
+}
+.cpCell b {
+  display: block;
+  font-size: 9.5px;
+  color: var(--muted);
+  font-weight: 600;
+}
+.cpCell.uid {
+  border-color: var(--copper);
+  background: var(--copper-soft);
+}
+.cpCell.trailer {
+  border-style: dashed;
+  color: var(--muted);
+}
+.cpCell.lab {
+  border-color: var(--w-cs);
+}
+.cpCell.closed {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+.cpCell.go {
+  box-shadow: 0 0 0 2px var(--w-cs);
+  background: var(--copper-soft);
+}
+.cpCell.ok {
+  box-shadow: inset 0 -3px 0 var(--ok);
+}
+.cpCell.skip {
+  box-shadow: inset 0 -3px 0 var(--danger);
+}
+.cpMore {
+  font: 11px var(--font-mono);
+  color: var(--muted);
+  padding-inline-start: 29px;
+}
+.cpLegend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.cpLegend i {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  border: 1px solid var(--line);
+  vertical-align: -2px;
+  margin-inline-end: 4px;
+}
+.cpLegend i.uid {
+  border-color: var(--copper);
+  background: var(--copper-soft);
+}
+.cpLegend i.lab {
+  border-color: var(--w-cs);
+}
+.cpLegend i.trailer {
+  border-style: dashed;
+}
+.cpOut {
+  margin: 0;
+  font-size: 14px;
+  display: grid;
+  gap: 4px;
+}
+.cpOut .now {
+  margin-inline-end: 6px;
+}
+.cpOut .now.warn {
+  background: var(--warn);
+}
+@media (max-width: 640px) {
+  .cpCards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .cpArrow {
+    transform: rotate(90deg);
+    justify-self: center;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cpCell {
+    transition: none;
+  }
+}
+
+/* Door and friends previews */
+.sim {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}

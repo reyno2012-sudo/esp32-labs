@@ -1,0 +1,150 @@
+/* A copper trace with one pad per lesson. The trace runs behind the pads through each item's
+   ::before; items before the open lesson light it in the track colour. */
+.steps {
+  --track: var(--copper);
+  --pad: 48px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  margin-inline: calc(var(--gutter) * -1);
+  padding: 4px var(--gutter);
+}
+.steps::-webkit-scrollbar {
+  display: none;
+}
+@media (min-width: 1212px) {
+  .steps {
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+}
+.steps ol {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-width: max-content;
+}
+.steps li {
+  position: relative;
+  flex: 1 0 auto;
+  min-width: 64px;
+  display: flex;
+  justify-content: center;
+  scroll-snap-align: center;
+}
+@media (min-width: 720px) {
+  .steps li {
+    min-width: 104px;
+  }
+}
+/* The trace segment from this pad to the next one. */
+.steps li:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--pad) / 2 + 4px);
+  inset-inline-start: 50%;
+  inset-inline-end: -50%;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--line);
+  transform: translateY(-50%);
+}
+.steps li[data-before]::before {
+  background: var(--track);
+}
+.step {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 4px 2px;
+  color: var(--ink);
+  text-decoration: none;
+  border-radius: var(--radius-m);
+  max-width: 140px;
+}
+.pad {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--pad);
+  height: var(--pad);
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--line);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+a.step:hover .pad {
+  border-color: var(--track);
+  transform: scale(1.06);
+}
+.step[aria-current="page"] .pad {
+  background: color-mix(in oklab, var(--track) 18%, var(--surface));
+  border-color: var(--track);
+  box-shadow:
+    0 0 0 4px var(--bg),
+    0 0 0 6px color-mix(in oklab, var(--track) 40%, transparent);
+}
+.step[aria-disabled="true"] {
+  color: var(--muted);
+}
+.step[aria-disabled="true"] .pad {
+  border-style: dashed;
+}
+.step[aria-disabled="true"] .pad svg {
+  filter: grayscale(1);
+  opacity: 0.55;
+}
+.n {
+  font: 700 11px var(--font-mono);
+  color: var(--muted);
+  margin-bottom: -4px;
+}
+.step[aria-current="page"] .n {
+  color: var(--track);
+}
+.mark {
+  position: absolute;
+  inset-inline-end: -3px;
+  bottom: -3px;
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--bg);
+}
+.t {
+  font: 600 12px / 1.25 var(--font-display);
+  text-align: center;
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.step[aria-current="page"] .t {
+  color: var(--ink);
+  font-weight: 750;
+}
+/* Phones: titles only under the open lesson, the rest are ids. */
+@media (max-width: 719px) {
+  .step:not([aria-current="page"]) .t {
+    display: none;
+  }
+}
+.step:focus-visible {
+  outline-offset: 0;
+}
+
+/* Hover lifts and nudges are decoration: still for anyone who asks for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  a.step:hover .pad {
+    transform: none;
+  }
+}

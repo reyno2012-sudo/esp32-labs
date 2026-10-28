@@ -1,0 +1,32 @@
+/* The 44-byte WAV header as chips (the original .snd-wav .bf). */
+.wav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.bf {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 1px;
+  border: 1.5px solid var(--line);
+  border-radius: 7px;
+  padding: 4px 7px;
+  font-size: 12px;
+}
+.bf b {
+  font: 600 11px var(--font-mono);
+  color: var(--sound);
+}
+.bf code {
+  font-size: 11px;
+  background: none;
+  padding: 0;
+}
+.bf i {
+  color: var(--muted);
+  font-style: normal;
+  font-size: 11px;
+}

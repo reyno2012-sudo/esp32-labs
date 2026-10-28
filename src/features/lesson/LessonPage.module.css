@@ -1,0 +1,92 @@
+/* Phone: the lesson first, the pinout after it (it is long). Wide: pinout left, sticky. */
+.grid {
+  --track: var(--copper);
+  /* How far below the top a section lands after a jump: just under the sticky dock. */
+  --dock-clearance: 92px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+.grid > :first-child {
+  order: 2;
+}
+@media (min-width: 880px) {
+  .grid {
+    --dock-clearance: 80px;
+    grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
+    gap: 20px;
+  }
+  .grid > :first-child {
+    order: 0;
+  }
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+/* One sheet instead of a stack of cards. A trace runs down its left edge; every section hangs a
+   via on it (LessonSection, LessonHeader), so you always see how far down the lesson you are.
+   --spine is the trace's x position, --spine-gap the room between it and the content. */
+.sheet {
+  --spine: 22px;
+  --spine-gap: 26px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  min-width: 0;
+  padding-block: 18px 26px;
+  padding-inline: calc(var(--spine) + var(--spine-gap)) 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  background: var(--surface);
+  overflow: clip;
+}
+@media (min-width: 560px) {
+  .sheet {
+    --spine: 28px;
+    --spine-gap: 34px;
+    padding-block: 24px 32px;
+    padding-inline: calc(var(--spine) + var(--spine-gap)) 24px;
+  }
+}
+.sheet::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  inset-inline-start: calc(var(--spine) - 1.5px);
+  width: 3px;
+  background: linear-gradient(
+    180deg,
+    var(--track),
+    color-mix(in oklab, var(--track) 35%, var(--line)) 40%,
+    var(--line)
+  );
+}
+/* A thin band in the track colour along the top edge. */
+.sheet::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: var(--track);
+}
+/* Simulators and diagrams sit on an inset bench. */
+.stage {
+  min-width: 0;
+  padding: 12px;
+  border-radius: var(--radius-m);
+  background: var(--bg);
+  border: 1px solid var(--line);
+}
+@media (max-width: 559px) {
+  .stage {
+    padding: 8px;
+    margin-inline: -6px;
+  }
+}
