@@ -1,0 +1,24 @@
+.frame {
+  position: relative;
+  background: var(--pcb);
+  border-radius: var(--radius-l);
+  padding: 10px 12px;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+@media (min-width: 560px) {
+  .frame {
+    padding: 14px 18px;
+  }
+}
+.frame canvas {
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 320 / 170;
+  height: auto;
+  image-rendering: pixelated;
+  border-radius: 3px;
+  display: block;
+  touch-action: manipulation;
+}

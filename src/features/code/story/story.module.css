@@ -1,0 +1,242 @@
+/* The call path that led to a scene: setup() › Lab::begin() › Display::begin() */
+.trail {
+  /* The path is code and always reads left to right (dir="ltr"), so its motion does too. */
+  --dir: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 12.5px;
+}
+.trail li {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  animation: crumb 0.3s ease backwards;
+}
+.trail li + li::before {
+  content: "›";
+  color: var(--muted);
+}
+.trail li:nth-child(2) {
+  animation-delay: 0.05s;
+}
+.trail li:nth-child(3) {
+  animation-delay: 0.1s;
+}
+.trail li:nth-child(n + 4) {
+  animation-delay: 0.15s;
+}
+@keyframes crumb {
+  from {
+    opacity: 0;
+    transform: translateX(calc(-6px * var(--dir)));
+  }
+}
+.trail button {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  padding: 2px 8px;
+  min-height: 28px;
+  cursor: pointer;
+}
+.trail button:hover {
+  border-color: var(--copper);
+}
+.trail code {
+  background: none;
+  padding: 0;
+  font-size: 12px;
+}
+.trail li[aria-current="step"] code {
+  font-weight: 700;
+  color: var(--copper);
+}
+.where {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  margin: 0;
+  font: 12px var(--font-mono);
+  color: var(--muted);
+}
+.fileChip {
+  font-weight: 700;
+  color: var(--ink);
+  border: 1px solid var(--copper);
+  border-radius: var(--radius-s);
+  padding: 2px 8px;
+  background: var(--copper-soft);
+}
+.fileChip[data-shared] {
+  border-style: dashed;
+  background: var(--surface);
+}
+.lead {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: var(--radius-s);
+  background: var(--bg);
+  font-size: 14.5px;
+}
+.noteText {
+  white-space: pre-wrap;
+  font: 13px / 1.55 var(--font-mono);
+}
+.next ul {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.next button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  background: var(--surface);
+  color: var(--ink);
+  padding: 7px 10px;
+  min-height: 38px;
+  cursor: pointer;
+  text-align: start;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+.next button:hover {
+  border-color: var(--copper);
+  transform: translateX(calc(3px * var(--dir)));
+}
+.next code {
+  background: none;
+  padding: 0;
+  font-size: 13px;
+}
+.small {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--muted);
+}
+.small code {
+  font-size: 12px;
+}
+.inline {
+  font: 600 12px var(--font-mono);
+  border: 0;
+  background: none;
+  color: var(--copper);
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Storyline: the acts and their scenes, indented by call depth, joined by a thread. */
+.storyline {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.actTitle {
+  margin: 0;
+  font: 700 15px var(--font-display);
+}
+.actBlurb {
+  margin: 0 0 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.scenes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.scenes::before {
+  content: "";
+  position: absolute;
+  inset-block: 6px;
+  inset-inline: 9px auto;
+  width: 2px;
+  background: var(--line);
+}
+.scenes li {
+  padding-inline-start: calc(var(--depth) * 16px);
+}
+.scenes button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 34px;
+  padding: 4px 6px;
+  border: 0;
+  border-radius: var(--radius-s);
+  background: none;
+  color: var(--ink);
+  text-align: start;
+  cursor: pointer;
+}
+.scenes button:hover {
+  background: var(--bg);
+}
+.scenes button[aria-current="step"] {
+  background: var(--copper-soft);
+}
+.dot {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  margin-inline-start: 4px;
+  border-radius: 50%;
+  border: 2px solid var(--copper);
+  background: var(--surface);
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+[data-seen] .dot {
+  background: var(--copper);
+}
+[aria-current="step"] .dot {
+  transform: scale(1.35);
+  background: var(--copper);
+}
+[data-shared] .dot {
+  border-style: dashed;
+}
+.scenes code {
+  background: none;
+  padding: 0;
+  font-size: 12.5px;
+  overflow-wrap: anywhere;
+}
+.file {
+  margin-inline-start: auto;
+  font: 11px var(--font-mono);
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trail li {
+    animation: none;
+  }
+  .next button,
+  .dot {
+    transition: none;
+  }
+}

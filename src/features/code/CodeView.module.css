@@ -1,0 +1,213 @@
+.scroll {
+  --code-font: 14px;
+  position: relative;
+  overflow: auto;
+  /* Sideways stays inside (no browser back-swipe); at the top or bottom the page takes over. */
+  overscroll-behavior-x: contain;
+  overscroll-behavior-y: auto;
+  background: var(--code-bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  min-height: 0;
+  height: 100%;
+  scroll-padding-block: 24px;
+}
+.scroll[data-size="s"] {
+  --code-font: 12.5px;
+}
+.scroll[data-size="l"] {
+  --code-font: 16px;
+}
+.content {
+  position: relative;
+  min-width: 100%;
+  width: max-content;
+  padding: 10px 0 40vh;
+}
+.scroll[data-wrap="true"] .content {
+  width: 100%;
+}
+
+/* The tour's spotlight: a lit band that slides from stop to stop. */
+.band {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 0;
+  background: var(--spot);
+  border-inline-start: 3px solid var(--spot-edge);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 0.42s cubic-bezier(0.2, 0.8, 0.2, 1),
+    height 0.42s cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 0.25s ease;
+}
+.band[data-on="true"] {
+  opacity: 1;
+}
+
+.line,
+.fold {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  width: 100%;
+  margin: 0;
+  padding-block: 0;
+  padding-inline: 0 14px;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: 400 var(--code-font) / 1.7 var(--font-mono);
+  text-align: start;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+.line:hover {
+  background: color-mix(in srgb, var(--lens) 55%, transparent);
+}
+.line:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: -2px;
+}
+.line[aria-current="true"] {
+  background: var(--lens);
+  box-shadow: inset 3px 0 0 var(--lens-edge);
+}
+.line[data-cursor] {
+  background: var(--lens);
+  box-shadow: inset 3px 0 0 var(--lens-edge);
+  animation: cursor-in 0.35s ease;
+}
+@keyframes cursor-in {
+  from {
+    background: transparent;
+  }
+}
+.scroll[data-touring="true"] .line[data-dim] {
+  opacity: 0.42;
+}
+.scroll[data-touring="true"] .line[data-dim]:hover {
+  opacity: 0.8;
+}
+
+.num {
+  display: none;
+  min-width: calc(var(--digits) * 1ch + 22px);
+  padding-block: 0;
+  padding-inline: 10px 12px;
+  color: var(--code-gutter);
+  text-align: end;
+  user-select: none;
+  font-variant-numeric: tabular-nums;
+}
+.scroll[data-numbers="true"] .num {
+  display: block;
+}
+.scroll[data-numbers="false"] .line,
+.scroll[data-numbers="false"] .fold {
+  padding-inline-start: 14px;
+}
+.code {
+  white-space: pre;
+  font: inherit;
+  background: none;
+  padding: 0;
+}
+.scroll[data-wrap="true"] .code {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.fold {
+  color: var(--muted);
+  font-style: italic;
+  background: color-mix(in srgb, var(--line) 30%, transparent);
+}
+.fold u {
+  color: var(--copper);
+}
+
+/* Syntax colours (tokens.css); the comment colour can be dimmed in Settings. */
+.keyword {
+  color: var(--syn-keyword);
+  font-weight: 600;
+}
+.type {
+  color: var(--syn-type);
+}
+.string,
+.char {
+  color: var(--syn-string);
+}
+.number {
+  color: var(--syn-number);
+}
+.comment {
+  color: var(--syn-comment);
+  font-style: italic;
+}
+.scroll[data-comments="dim"] .comment {
+  opacity: 0.72;
+}
+.function {
+  color: var(--syn-fn);
+}
+.constant {
+  color: var(--syn-const);
+}
+.preproc {
+  color: var(--syn-preproc);
+  font-weight: 600;
+}
+.line[data-chapter] .comment {
+  font-weight: 700;
+  font-style: normal;
+  color: var(--ink);
+}
+
+/* Words the phrasebook explains: a dotted underline invites a tap. */
+[data-term] {
+  text-decoration: underline dotted var(--term-line);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+[data-term]:hover {
+  text-decoration-style: solid;
+}
+/* Operators are explained in the line lens; underlining every "=" would be noise. */
+.op[data-term] {
+  text-decoration: none;
+}
+[data-fresh] {
+  position: relative;
+}
+[data-fresh]::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  inset-inline-end: -5px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--copper);
+  animation: pulse 1.6s ease-in-out 3;
+}
+@keyframes pulse {
+  50% {
+    transform: scale(1.7);
+    opacity: 0.4;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .band,
+  .line {
+    transition: none;
+  }
+  .line[data-cursor],
+  [data-fresh]::after {
+    animation: none;
+  }
+}

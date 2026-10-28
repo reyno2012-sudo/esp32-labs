@@ -1,0 +1,27 @@
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  padding: 14px;
+  min-width: 0;
+}
+@media (min-width: 560px) {
+  .panel {
+    padding: 18px;
+  }
+}
+.title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 10px;
+}
+.intro {
+  margin: -2px 0 12px;
+  color: var(--muted);
+  max-width: 72ch;
+  font-size: 14px;
+}

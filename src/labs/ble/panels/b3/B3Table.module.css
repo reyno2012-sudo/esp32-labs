@@ -1,0 +1,28 @@
+.phone {
+  fill: var(--surface);
+  stroke: var(--line);
+  stroke-width: 2;
+}
+.phoneLabel {
+  font-size: 13px;
+  fill: var(--ink);
+}
+.service {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  fill: var(--muted);
+}
+.row {
+  fill: var(--surface);
+  stroke: var(--line);
+}
+.name {
+  font-size: 13px;
+  font-weight: 600;
+  fill: var(--ink);
+}
+.meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--muted);
+}

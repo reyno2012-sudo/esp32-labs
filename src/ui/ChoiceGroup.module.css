@@ -1,0 +1,20 @@
+.group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.group button {
+  font: 600 12px var(--font-mono);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: var(--radius-s);
+  padding: 6px 9px;
+  min-height: 32px;
+  cursor: pointer;
+}
+.group button[aria-pressed="true"] {
+  background: var(--copper);
+  border-color: var(--copper);
+  color: var(--surface);
+}

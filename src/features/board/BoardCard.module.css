@@ -1,0 +1,67 @@
+.card {
+  scroll-margin-top: var(--dock-clearance, 132px);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  padding: 14px;
+}
+.card:focus {
+  outline: none;
+}
+/* Wide: it stays beside the lesson, under the sticky dock. */
+@media (min-width: 880px) {
+  .card {
+    position: sticky;
+    top: calc(env(safe-area-inset-top, 0px) + 76px);
+  }
+}
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--muted);
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.legend i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.between {
+  margin-top: 14px;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+.between summary {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  margin-bottom: 6px;
+}
+.between ol {
+  margin: 0;
+  padding-inline-start: 20px;
+  font-size: 13.5px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.between p {
+  margin: 8px 0 0;
+  font-size: 12.5px;
+  color: var(--muted);
+}

@@ -1,0 +1,124 @@
+/* The 3D panels (R2 field, R4 memory): stage, controls, status pills and the air bit strip. */
+.f3d {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+.ctl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px 16px;
+  align-items: center;
+}
+.ctl label {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2px 8px;
+  font: 600 11.5px var(--font-mono);
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.ctl input[type="range"] {
+  grid-column: 1 / -1;
+  width: 100%;
+  min-height: 32px;
+  accent-color: var(--rfid);
+}
+.ctl output {
+  font: 600 12px var(--font-mono);
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.pills span {
+  font: 600 11.5px var(--font-mono);
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.pills span::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--line);
+}
+.pills span.yes {
+  color: var(--ink);
+  border-color: var(--ok);
+}
+.pills span.yes::before {
+  background: var(--ok);
+}
+.pills span.no {
+  color: var(--ink);
+  border-color: var(--danger);
+}
+.pills span.no::before {
+  background: var(--danger);
+}
+.bitstrip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  font: 600 11px var(--font-mono);
+}
+.bitstrip span {
+  min-width: 30px;
+  text-align: center;
+  padding: 3px 4px;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  background: var(--surface);
+}
+.bitstrip span.now {
+  border-color: var(--copper);
+  color: var(--ink);
+  background: var(--copper-soft);
+}
+.bitstrip small {
+  display: block;
+  font-weight: 400;
+  font-size: 9.5px;
+}
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  font: 11.5px var(--font-mono);
+  color: var(--muted);
+  margin: 0;
+}
+.legend i {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  margin-inline-end: 5px;
+  vertical-align: -1px;
+  background: var(--key);
+}
+.select {
+  font: 12.5px var(--font-mono);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 4px 6px;
+  min-height: 34px;
+  background: var(--surface);
+  color: var(--ink);
+}
+@media (prefers-reduced-motion: reduce) {
+  .labels span {
+    transition: none;
+  }
+}

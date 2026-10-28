@@ -1,0 +1,102 @@
+.card {
+  --track: var(--copper);
+  display: grid;
+  gap: 14px;
+  justify-items: start;
+  padding: 20px;
+  border-radius: var(--radius-l);
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--track) 50%, transparent),
+    0 18px 40px -20px var(--track);
+  border-top: 4px solid var(--track);
+}
+.kicker {
+  margin: 0;
+  font: 600 11px var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.pad {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  border: 2px solid var(--track);
+  background: color-mix(in oklab, var(--track) 16%, var(--surface));
+  box-shadow: inset 0 0 0 3px color-mix(in oklab, var(--surface) 25%, transparent);
+}
+.track {
+  margin: 0;
+  font: 600 12px var(--font-mono);
+  color: var(--track);
+}
+.title {
+  margin: 2px 0 0;
+  font: 800 20px / 1.15 var(--font-display);
+  font-stretch: 110%;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+}
+.go,
+.code {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 999px;
+  font: 700 14.5px var(--font-display);
+  text-decoration: none;
+}
+.go {
+  flex: 1 1 auto;
+  justify-content: center;
+  background: var(--ink);
+  color: var(--surface);
+}
+.go svg:last-child {
+  transition: transform 0.2s ease;
+}
+.go:hover svg:last-child {
+  transform: translateX(calc(4px * var(--dir)));
+}
+.code {
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+.code:hover {
+  border-color: var(--track);
+}
+
+/* Hover lifts and nudges are decoration: still for anyone who asks for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  .go:hover svg:last-child {
+    transform: none;
+  }
+}
+
+.id {
+  position: absolute;
+  inset-inline-end: -6px;
+  bottom: -6px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--track);
+  color: var(--surface);
+  font: 700 12px var(--font-mono);
+}

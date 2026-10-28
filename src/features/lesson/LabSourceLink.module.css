@@ -1,0 +1,74 @@
+/* A card, not a pill: it leaves the page, so it says where it goes. The tile borrows the app logo's
+   board-green and copper pad. */
+.card {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 100%;
+  padding-block: 8px;
+  padding-inline: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  background: var(--surface);
+  color: var(--ink);
+  text-decoration: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.card:hover {
+  border-color: var(--copper);
+  box-shadow: 0 10px 24px -18px var(--ink);
+}
+.mark {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--pcb);
+  color: var(--pad);
+  box-shadow: inset 0 0 0 2px var(--pcb-edge);
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+.title {
+  font: 700 14.5px var(--font-display);
+  line-height: 1.25;
+}
+.path {
+  font: 12px var(--font-mono);
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+.go {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin-inline-start: 4px;
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--ink);
+  transform: rotate(calc(-45deg * var(--dir)));
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.card:hover .go {
+  background: var(--copper);
+  color: var(--surface);
+  transform: rotate(calc(-45deg * var(--dir))) translateX(calc(2px * var(--dir)));
+}
+@media (prefers-reduced-motion: reduce) {
+  .card:hover .go {
+    transform: rotate(calc(-45deg * var(--dir)));
+  }
+}

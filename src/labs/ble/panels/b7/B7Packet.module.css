@@ -1,0 +1,7 @@
+.key {
+  min-width: 40px;
+  touch-action: manipulation;
+}
+.hint {
+  opacity: 0.6;
+}

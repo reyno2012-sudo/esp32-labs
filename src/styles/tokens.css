@@ -1,0 +1,285 @@
+/*
+ * Design tokens: the only place raw colour values live. Components use var(--token) only.
+ * A theme is a block that redefines the colour tokens; "system" follows prefers-color-scheme,
+ * and data-theme="light" | "dark" on <html> pins one (see src/lib/theme.ts).
+ */
+:root {
+  color-scheme: light;
+
+  /* Surfaces and text: a datasheet page */
+  --bg: #eef1f0;
+  --surface: #f8faf9;
+  --ink: #18221f;
+  --muted: #56645f;
+  --line: #c9d2ce;
+  --copper: #b0601f;
+  --copper-soft: #f3dfcd;
+
+  /* The board */
+  --pcb: #14201c;
+  --pcb-edge: #2a3a34;
+  --silk: #e9efe9;
+  --silk-dim: #8fa39a;
+  --pad: #d4a24a;
+
+  /* 3D models: drawn like an illustration, ink outlines and a soft shadow, the same in both themes */
+  --model-ink: #0d1714;
+  --model-shadow: #0b1310;
+  --metal: #c9d1d4;
+  --metal-dark: #7f8a8e;
+  --plastic: #2b3331;
+  --hotspot: #0d8a86;
+
+  /* The parts library (src/ui/parts): physical colours, the same in both themes */
+  --part-light: #ffffff;
+  --part-red: #e5484d;
+  --part-green: #2f9e6a;
+  --part-blue: #3e63dd;
+  --part-sky: #3aa8e8;
+  --part-yellow: #f2bc2e;
+  --part-orange: #f07a2a;
+  --part-purple: #8e4ec6;
+  --part-pink: #e0508f;
+  --part-teal: #13a39a;
+  --part-glass: #1c2733;
+  --part-screen: #2fd5c4;
+
+  /* Chip block families (src/domain/chip.ts BlockFamily): aliases of existing colours, so both
+     themes follow. Always paired with a family glyph, never the only cue. */
+  --fam-system: var(--copper);
+  --fam-memory: var(--part-purple);
+  --fam-security: var(--part-red);
+  --fam-connectivity: var(--w-sda);
+  --fam-timing: var(--part-orange);
+  --fam-analog: var(--part-teal);
+  --fam-radio: var(--ble);
+
+  /* Status */
+  --ok: #1f7a4a;
+  --warn: #a05a00;
+  --danger: #b3261e;
+  --power: #c2410c;
+  --gnd: #3f4a46;
+
+  /* The simulated TFT and scope canvases (dark in both themes, like the real screen) */
+  --scope-paper: #0c121c;
+  --scope-grid: #1e2e42;
+  --scope-trace: #5ae6be;
+  --scope-ink: #e6ecf5;
+  --scope-muted: #788ca5;
+  --scope-amber: #ffb03c;
+  --scope-coral: #ff6054;
+  --scope-dim: #222e3e;
+  --scope-indigo: #10162a;
+  --scope-blue: #5aa0ff;
+  --scope-violet: #b082ff;
+  --scope-pink: #ff80c8;
+  --test-r: #ff0000;
+  --test-g: #00ff00;
+  --test-b: #0000ff;
+  --test-w: #ffffff;
+
+  /* Wire colours, one per signal, as on the bench */
+  --w-gnd: #2b2f2e;
+  --w-vcc: #d1352b;
+  --w-scl: #c99700;
+  --w-sda: #2563c9;
+  --w-res: #e07a10;
+  --w-dc: #1f9d55;
+  --w-cs: #8a4fd0;
+  --w-blk: #7d8b86;
+  --w-btn: #c2255c;
+
+  /* Serial monitor */
+  --term-bg: #101614;
+  --term-ink: #cfe0d8;
+  --term-dim: #71877d;
+  --term-info: #6fd3a1;
+  --term-warn: #f0b85a;
+  --term-err: #ff7a6e;
+
+  /* Tracks and parts */
+  --rfid: #0e7490;
+  --rc522: #1f56a8;
+  --rc522-edge: #163f7c;
+  --card-white: #f3f5f7;
+  --gold: #c9a227;
+  --ble: #1d5fd1;
+  --sound: #a3195b;
+  --snd-mic: #0d6b63;
+  --snd-amp: #6b3fc0;
+
+  /* Code reader: syntax colours (AA on --code-bg) and the tour spotlight */
+  --code-bg: #fbfcfb;
+  --code-gutter: #5f6e69;
+  --syn-keyword: #7a3fb8;
+  --syn-type: #0b6b84;
+  --syn-string: #2b7319;
+  --syn-number: #a14700;
+  --syn-comment: #5d6c66;
+  --syn-fn: #1d55a6;
+  --syn-const: #a0257a;
+  --syn-preproc: #95501a;
+  --spot: #f6e6d6;
+  --spot-edge: #d08a4c;
+  --lens: #e3eefc;
+  --lens-edge: #4f7fd0;
+  --term-line: #b0601f;
+
+  /* Type */
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  /* Leading for body text; scripts with taller glyphs raise it below. */
+  --leading: 1.55;
+
+  /* Shape and rhythm */
+  --radius-s: 6px;
+  --radius-m: 10px;
+  --radius-l: 12px;
+  --gutter: 16px;
+  --focus-ring: 2px solid var(--copper);
+}
+
+/* Dark: one block, used both by the OS preference and by an explicit choice. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0f1513;
+    --surface: #161e1b;
+    --ink: #e4ebe7;
+    --muted: #9aaba4;
+    --line: #2b3833;
+    --copper: #e39a5c;
+    --copper-soft: #3a2a1d;
+    --pcb: #0a110e;
+    --pcb-edge: #2f423a;
+    --ok: #5fcf8f;
+    --warn: #f0b85a;
+    --danger: #ff8a80;
+    --power: #ff9a5c;
+    --gnd: #8a9a94;
+    --w-gnd: #a3aeaa;
+    --w-vcc: #ff6b5e;
+    --w-scl: #f5c542;
+    --w-sda: #6aa2ff;
+    --w-res: #ffa04a;
+    --w-dc: #4fd18b;
+    --w-cs: #b88cff;
+    --w-blk: #e6ece9;
+    --w-btn: #ff7aa8;
+    --rfid: #4cc9e0;
+    --rc522: #2a63b8;
+    --rc522-edge: #1b4686;
+    --card-white: #e8ecef;
+    --gold: #e0b93a;
+    --ble: #7fb0ff;
+    --sound: #ff8fcf;
+    --snd-mic: #5fd3c3;
+    --snd-amp: #c4a5ff;
+    --code-bg: #111816;
+    --code-gutter: #8a9c95;
+    --syn-keyword: #c9a2ff;
+    --syn-type: #6fd3e0;
+    --syn-string: #9ad97a;
+    --syn-number: #ffb26b;
+    --syn-comment: #8fa39a;
+    --syn-fn: #8ab8ff;
+    --syn-const: #ff94cf;
+    --syn-preproc: #e8a86f;
+    --spot: #2e2419;
+    --spot-edge: #b8783f;
+    --lens: #172540;
+    --lens-edge: #6a9be8;
+    --term-line: #e39a5c;
+    --hotspot: #4fd1c5;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0f1513;
+  --surface: #161e1b;
+  --ink: #e4ebe7;
+  --muted: #9aaba4;
+  --line: #2b3833;
+  --copper: #e39a5c;
+  --copper-soft: #3a2a1d;
+  --pcb: #0a110e;
+  --pcb-edge: #2f423a;
+  --ok: #5fcf8f;
+  --warn: #f0b85a;
+  --danger: #ff8a80;
+  --power: #ff9a5c;
+  --gnd: #8a9a94;
+  --w-gnd: #a3aeaa;
+  --w-vcc: #ff6b5e;
+  --w-scl: #f5c542;
+  --w-sda: #6aa2ff;
+  --w-res: #ffa04a;
+  --w-dc: #4fd18b;
+  --w-cs: #b88cff;
+  --w-blk: #e6ece9;
+  --w-btn: #ff7aa8;
+  --rfid: #4cc9e0;
+  --rc522: #2a63b8;
+  --rc522-edge: #1b4686;
+  --card-white: #e8ecef;
+  --gold: #e0b93a;
+  --ble: #7fb0ff;
+  --sound: #ff8fcf;
+  --snd-mic: #5fd3c3;
+  --snd-amp: #c4a5ff;
+  --code-bg: #111816;
+  --code-gutter: #8a9c95;
+  --syn-keyword: #c9a2ff;
+  --syn-type: #6fd3e0;
+  --syn-string: #9ad97a;
+  --syn-number: #ffb26b;
+  --syn-comment: #8fa39a;
+  --syn-fn: #8ab8ff;
+  --syn-const: #ff94cf;
+  --syn-preproc: #e8a86f;
+  --spot: #2e2419;
+  --spot-edge: #b8783f;
+  --lens: #172540;
+  --lens-edge: #6a9be8;
+  --term-line: #e39a5c;
+  --hotspot: #4fd1c5;
+}
+
+/* Scripts Archivo has no glyphs for: Archivo still sets the Latin words (code terms, units), the
+   platform's own font for that script sets the rest. System fonts only, nothing to download. */
+:root:lang(zh) {
+  --font-script: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  --font-display: "Archivo", var(--font-script);
+  --font-body: "Archivo", var(--font-script);
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, var(--font-script);
+  --leading: 1.75;
+}
+:root:lang(zh-Hant) {
+  --font-script: "PingFang TC", "Hiragino Sans CNS", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+}
+:root:lang(ja) {
+  --font-script:
+    "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", Meiryo,
+    sans-serif;
+  --font-display: "Archivo", var(--font-script);
+  --font-body: "Archivo", var(--font-script);
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, var(--font-script);
+  --leading: 1.75;
+}
+:root:lang(ar) {
+  --font-script: "SF Arabic", "Geeza Pro", "Noto Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+  --font-display: "Archivo", var(--font-script);
+  --font-body: "Archivo", var(--font-script);
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, var(--font-script);
+  --leading: 1.8;
+}
+
+/* Reading direction as a sign, for sideways motion: translateX(calc(4px * var(--dir))). */
+:root {
+  --dir: 1;
+}
+:root[dir="rtl"] {
+  --dir: -1;
+}

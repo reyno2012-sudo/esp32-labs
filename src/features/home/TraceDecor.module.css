@@ -1,0 +1,18 @@
+.decor {
+  position: absolute;
+  inset: 0 calc(var(--gutter) * -1) auto;
+  width: calc(100% + var(--gutter) * 2);
+  height: 760px;
+  z-index: -1;
+  pointer-events: none;
+  fill: none;
+  stroke: color-mix(in oklab, var(--copper) 30%, var(--line));
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.8;
+}
+.decor circle {
+  fill: var(--bg);
+  stroke-width: 2.5;
+}

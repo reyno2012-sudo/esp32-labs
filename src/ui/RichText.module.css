@@ -1,0 +1,19 @@
+.parts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 6px;
+  margin: 4px 0 0;
+}
+.parts > span {
+  font: 600 11px var(--font-mono);
+  border-radius: 999px;
+  padding: 1px 8px;
+}
+.need {
+  border: 1px solid var(--sound);
+  color: var(--ink);
+}
+.opt {
+  border: 1px dashed var(--line);
+  color: var(--muted);
+}

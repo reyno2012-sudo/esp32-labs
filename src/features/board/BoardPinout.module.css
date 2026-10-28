@@ -1,0 +1,27 @@
+.board {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 78vh;
+}
+.pinLabel {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  fill: var(--muted);
+}
+.used {
+  fill: var(--ink);
+  font-weight: 600;
+}
+.silk {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  fill: var(--silk-dim);
+  letter-spacing: 0.06em;
+}
+.role {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  fill: var(--surface);
+}

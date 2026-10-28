@@ -1,0 +1,6 @@
+# A single-package pnpm project; this file holds its pnpm settings.
+packages: []
+# Deterministic installs: `pnpm add` writes exact versions.
+savePrefix: ""
+allowBuilds:
+  esbuild: true

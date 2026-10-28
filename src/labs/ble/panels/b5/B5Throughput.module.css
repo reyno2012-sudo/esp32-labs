@@ -1,0 +1,38 @@
+.sliders {
+  display: grid;
+  gap: 10px;
+}
+.slider {
+  display: grid;
+  gap: 2px;
+  font-size: 14px;
+}
+.slider input {
+  width: 100%;
+  min-height: 32px;
+}
+.axis {
+  stroke: var(--line);
+  stroke-width: 1;
+}
+.event {
+  stroke: var(--muted);
+  stroke-dasharray: 3 4;
+}
+.eventLabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--muted);
+}
+.title {
+  font-size: 12px;
+  fill: var(--ink);
+}
+.titleMuted {
+  font-size: 12px;
+  fill: var(--muted);
+}
+.note {
+  font-size: 11px;
+  fill: var(--muted);
+}

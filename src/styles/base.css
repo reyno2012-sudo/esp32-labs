@@ -1,0 +1,141 @@
+/* Element defaults, mobile first. Component styles live next to their component (*.module.css). */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: var(--leading);
+  padding-inline: max(var(--gutter), env(safe-area-inset-left))
+    max(var(--gutter), env(safe-area-inset-right));
+  padding-block: max(16px, env(safe-area-inset-top)) max(48px, env(safe-area-inset-bottom));
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: var(--font-mono);
+  /* Code, commands and serial output read left to right in every language, and an inline
+     snippet inside Arabic text keeps its own order. */
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+:where(p, li, dd) code {
+  font-size: 0.87em;
+  background: var(--bg);
+  padding: 0 5px;
+  border-radius: 4px;
+  overflow-wrap: anywhere;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+}
+
+a {
+  color: var(--copper);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Components choose their own still alternative for reduced motion; this only stops smooth scrolling. */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Settings → Motion → Calm: the same still alternative on any device. */
+:root[data-motion="reduced"] *,
+:root[data-motion="reduced"] *::before,
+:root[data-motion="reduced"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Switching between "Do the lab" and "Read the code": the page cross-fades, the tab bar stays put. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.28s;
+  animation-timing-function: ease-in-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+:root[data-motion="reduced"]::view-transition-group(*),
+:root[data-motion="reduced"]::view-transition-old(*),
+:root[data-motion="reduced"]::view-transition-new(*) {
+  animation: none !important;
+}
+
+/* ---- Languages with their own typographic rules (see docs/I18N.md) ---- */
+
+/* Arrows that mean "next" or "back" point the way the language reads. */
+:root[dir="rtl"] [data-directional] {
+  transform: scaleX(-1);
+}
+
+/* Arabic letters join: tracking pulls words apart, and the script has no italic. Chinese and
+   Japanese are set solid too; tracked-out small caps are a Latin habit. */
+:root:is(:lang(ar), :lang(zh), :lang(ja)) :not(code, kbd, pre, samp) {
+  letter-spacing: normal !important;
+}
+:root:lang(ar) :is(i, em) {
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* Chinese and Japanese break between characters: keep the strict rules for punctuation and small
+   kana, and let Japanese wrap at phrase boundaries where the browser can find them. */
+:root:is(:lang(zh), :lang(ja)) {
+  line-break: strict;
+  word-break: normal;
+}
+:root:lang(ja) {
+  word-break: auto-phrase;
+}

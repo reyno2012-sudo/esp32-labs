@@ -1,0 +1,34 @@
+.cmd {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+.cmd code {
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  white-space: pre;
+  font-size: 13px;
+  padding: 9px 12px;
+  background: var(--bg);
+}
+.cmd button {
+  border: 0;
+  border-inline-start: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  font: 600 12px var(--font-mono);
+  padding: 0 12px;
+  min-width: 72px;
+  cursor: pointer;
+}
+.compact {
+  margin-top: 0;
+}
+.compact code {
+  font-size: 12.5px;
+  padding: 8px 12px;
+}

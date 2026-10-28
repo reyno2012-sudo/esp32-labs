@@ -1,0 +1,161 @@
+/* The slot stays as tall as the full dock, so the page does not jump when the dock shrinks inside
+   it. It is the sticky part; only the dock itself takes clicks. */
+.slot {
+  position: sticky;
+  top: 8px;
+  z-index: 5;
+  pointer-events: none;
+}
+/* Stays in view while you read, so the way back and the next section are always one tap away. The
+   name keeps the dock still while the page around it cross-fades (see base.css). */
+.dock {
+  --track: var(--copper);
+  pointer-events: auto;
+  view-transition-name: lesson-tabs;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  background: color-mix(in oklab, var(--surface) 88%, transparent);
+  backdrop-filter: blur(10px) saturate(1.2);
+  box-shadow: 0 10px 24px -18px var(--ink);
+  overflow: hidden;
+  transition:
+    transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 0.2s ease;
+}
+/* Scrolling down on a page that wants the room: slide up out of the way (a keyboard user who tabs
+   into it brings it back). */
+.dock[data-hidden]:not(:focus-within) {
+  transform: translateY(calc(-100% - 16px));
+  opacity: 0;
+  pointer-events: none;
+}
+@media (min-width: 880px) {
+  .dock {
+    flex-wrap: nowrap;
+  }
+}
+.tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  padding: 2px;
+  border-radius: var(--radius-m);
+  background: var(--bg);
+  flex: 1 0 100%;
+}
+@media (min-width: 880px) {
+  .tabs {
+    flex: 0 0 auto;
+  }
+  .dock[data-view="code"] .tabs {
+    flex: 1 1 auto;
+  }
+}
+.tabs a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1px;
+  padding: 6px 14px;
+  border-radius: calc(var(--radius-m) - 2px);
+  color: var(--ink);
+  text-decoration: none;
+  min-height: 44px;
+  transition: background 0.2s ease;
+}
+.tabs a:hover {
+  background: var(--surface);
+}
+.tabs a[aria-current="page"] {
+  background: var(--ink);
+  color: var(--surface);
+}
+/* Past the top: one small button for the other view, the page's own nav beside it. */
+.dock[data-compact] {
+  flex-wrap: nowrap;
+}
+.dock[data-compact]:not([data-extras]) {
+  width: fit-content;
+}
+.dock[data-compact] .tabs {
+  grid-template-columns: auto;
+  flex: 0 0 auto;
+}
+.dock[data-compact] .tabs a[aria-current="page"],
+.dock[data-compact] .sub {
+  display: none;
+}
+.dock[data-compact] .tabs a {
+  min-height: 40px;
+  padding-block: 4px;
+}
+
+.label {
+  font: 700 14.5px var(--font-display);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+.sub {
+  font: 11.5px var(--font-mono);
+  opacity: 0.75;
+}
+/* On the lab page the section nav sits next to the tabs: keep the tabs to their labels. */
+@media (min-width: 880px) {
+  .dock[data-view="lab"] .sub {
+    display: none;
+  }
+}
+@media (max-width: 559px) {
+  .sub {
+    display: none;
+  }
+}
+.badge {
+  font: 600 10.5px var(--font-mono);
+  letter-spacing: 0.04em;
+  border-radius: 999px;
+  padding: 1px 7px;
+  background: var(--copper);
+  color: var(--surface);
+}
+
+/* How far down the page you are, drawn by the scroll itself (no script). */
+.progress {
+  position: absolute;
+  inset: auto 0 0;
+  height: 2px;
+  background: var(--track);
+  transform-origin: left;
+  transform: scaleX(0);
+}
+/* It grows from where a line starts. */
+.progress:dir(rtl) {
+  transform-origin: right;
+}
+@supports (animation-timeline: scroll()) {
+  .progress {
+    animation: read linear both;
+    animation-timeline: scroll(root);
+  }
+}
+@keyframes read {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dock {
+    transition: opacity 0.2s ease;
+  }
+  .dock[data-hidden]:not(:focus-within) {
+    transform: none;
+  }
+}

@@ -1,0 +1,34 @@
+.inputs {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--muted);
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+.inputs input {
+  max-width: 100%;
+}
+.title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  fill: var(--muted);
+}
+.titleOver {
+  composes: title;
+  fill: var(--danger);
+}
+.empty {
+  fill: var(--line);
+}
+.cell {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  fill: var(--ink);
+}
+.note {
+  font-size: 11px;
+  fill: var(--muted);
+}

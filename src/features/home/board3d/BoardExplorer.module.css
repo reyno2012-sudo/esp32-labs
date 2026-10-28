@@ -1,0 +1,215 @@
+/* Phone: the model, then the callouts as a row you swipe. Wide: callouts on both sides of the
+   model, three a side, with leaders drawn across to their parts. */
+.explorer {
+  aspect-ratio: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+  cursor: auto;
+}
+.explorer:active {
+  cursor: auto;
+}
+.view {
+  grid-row: 1;
+  height: 320px;
+}
+.view canvas {
+  cursor: grab;
+  touch-action: pan-y;
+}
+.view canvas:active {
+  cursor: grabbing;
+}
+@media (min-width: 1000px) {
+  .explorer {
+    grid-template-columns: 240px minmax(0, 1fr) 240px;
+    grid-template-rows: repeat(3, minmax(0, auto));
+    column-gap: 12px;
+    row-gap: 14px;
+    align-items: center;
+  }
+  .view {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    align-self: stretch;
+    height: auto;
+    min-height: 500px;
+  }
+}
+
+.cards {
+  grid-row: 2;
+  display: flex;
+  gap: 10px;
+  margin: 0 calc(var(--gutter) * -1);
+  padding: 4px var(--gutter) 10px;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.cards::-webkit-scrollbar {
+  display: none;
+}
+@media (min-width: 1000px) {
+  .cards {
+    display: contents;
+  }
+}
+.card {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 min(78%, 260px);
+  scroll-snap-align: start;
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  background: color-mix(in oklab, var(--surface) 94%, transparent);
+  box-shadow: 0 10px 22px -18px var(--ink);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.card[data-on] {
+  border-color: var(--hotspot);
+  box-shadow:
+    0 0 0 1px var(--hotspot),
+    0 14px 28px -18px var(--hotspot);
+}
+@media (min-width: 1000px) {
+  .card[data-side="left"] {
+    grid-column: 1;
+  }
+  .card[data-side="right"] {
+    grid-column: 3;
+  }
+}
+.head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  text-align: start;
+  cursor: pointer;
+}
+.icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--bg);
+  transition: background 0.2s ease;
+}
+.card[data-on] .icon {
+  background: color-mix(in oklab, var(--hotspot) 22%, var(--surface));
+}
+.title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: 700 14px var(--font-display);
+  font-stretch: 75%;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.num {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  font: 700 10.5px var(--font-mono);
+  letter-spacing: 0;
+  background: var(--hotspot);
+  color: var(--surface);
+}
+.text {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+.uses {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin: 2px 0 0;
+}
+.uses a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 28px;
+  padding-block: 0;
+  padding-inline: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  font: 600 11.5px var(--font-mono);
+  text-decoration: none;
+}
+.uses a:hover {
+  border-color: var(--hotspot);
+}
+.more {
+  font: 11.5px var(--font-mono);
+  color: var(--muted);
+  padding-inline-start: 2px;
+}
+
+/* The numbered hotspots on the model (created by the stage, hence global). */
+.explorer :global(.stage-hotspot) {
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid var(--surface);
+  background: var(--hotspot);
+  color: var(--surface);
+  font: 700 11px var(--font-mono);
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--hotspot) 25%, transparent);
+}
+.explorer :global(.stage-hotspot)::after {
+  display: none;
+}
+/* The leader's own dot sits under the numbered hotspot; the number is enough. */
+.explorer :global(.stage-leaders) circle {
+  display: none;
+}
+@media (max-width: 999px) {
+  .explorer :global(.stage-leaders) {
+    display: none;
+  }
+}
+/* "Go inside the chip": the way from the board to the chip pages. */
+.inside {
+  grid-row: 3;
+  justify-self: center;
+  margin-block-start: 8px;
+  font-weight: 700;
+  color: var(--copper);
+}
+@media (min-width: 1000px) {
+  .inside {
+    grid-column: 2;
+    grid-row: 4;
+  }
+}

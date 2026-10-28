@@ -1,0 +1,40 @@
+.device {
+  fill: var(--surface);
+  stroke: var(--line);
+  stroke-width: 2;
+}
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  fill: var(--ink);
+}
+.cap {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--muted);
+}
+.role {
+  font-size: 12px;
+  fill: var(--ink);
+}
+.code {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 700;
+}
+.link {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-dasharray: 6 6;
+}
+.method {
+  font-size: 16px;
+  font-weight: 700;
+}
+.verdict {
+  font-size: 11px;
+  fill: var(--muted);
+}
+.cell {
+  font-size: 12px;
+}

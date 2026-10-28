@@ -1,0 +1,88 @@
+name: Bug report
+description: Something in the guide is broken, wrong or hard to use.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time. A problem with what the **board** does (a crash, a wrong pin, a library) belongs in [esp-labs](https://github.com/agharsallah/esp-labs/issues). A problem with the **guide** (text, simulator, layout, code reader) belongs here.
+  - type: input
+    id: link
+    attributes:
+      label: Link
+      description: Copy the address bar. It carries the lesson, the tab and the language.
+      placeholder: https://esp-labs-web.vercel.app/#/lessons/R3?lang=en
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where is it?
+      options:
+        - Labs map (home)
+        - Lesson page (text, steps, wiring, pinout)
+        - Simulator or explainer panel
+        - Read the code
+        - Bench log
+        - Settings
+        - Language, translation or right-to-left layout
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what did you expect?
+      description: The steps that lead to it, if it takes more than opening the link.
+      placeholder: |
+        1. Open the link
+        2. Click "sos" under the serial monitor
+        3. The LED keeps fading instead of blinking SOS
+    validations:
+      required: true
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot or recording
+      description: Drag an image or a short video here. It is often the fastest way to show a layout problem.
+  - type: dropdown
+    id: screen
+    attributes:
+      label: Screen
+      multiple: true
+      options:
+        - Desktop
+        - Tablet
+        - Phone
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and system
+      placeholder: Safari 19 on iOS 26, Chrome 142 on Windows 11…
+    validations:
+      required: true
+  - type: dropdown
+    id: theme
+    attributes:
+      label: Theme
+      description: Settings, or your system's light/dark mode.
+      options:
+        - Light
+        - Dark
+        - Not sure
+  - type: textarea
+    id: console
+    attributes:
+      label: Console errors
+      description: Optional. Open the browser's developer tools (F12), then the Console tab, and paste any red lines.
+      render: text
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before you send
+      options:
+        - label: I searched the [open issues](https://github.com/agharsallah/esp-labs-web/issues) and this is not already there.
+          required: true

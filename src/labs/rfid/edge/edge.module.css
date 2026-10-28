@@ -1,0 +1,40 @@
+.tabs {
+  margin-bottom: 10px;
+}
+.body {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+.body h4 {
+  margin: 0;
+  font: 650 16px var(--font-display);
+}
+.body p {
+  margin: 0;
+  max-width: 68ch;
+}
+.src {
+  font: 11.5px var(--font-mono);
+  color: var(--muted);
+}
+.paste {
+  display: grid;
+  gap: 6px;
+}
+.paste textarea {
+  width: 100%;
+  min-height: 90px;
+  resize: vertical;
+  font: 16px var(--font-mono);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 5px 8px;
+  background: var(--surface);
+  color: var(--ink);
+}
+@media (min-width: 560px) {
+  .paste textarea {
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,167 @@
+/* Shared look of the Bluetooth track's explainer panels (ported from the guide's .wd, .spi-ctl,
+   .ble-bytes, .ble-field, table.wiring and .chip). */
+.wd {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.full {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* A row of labelled controls: sliders, selects, checkboxes, buttons. */
+.ctl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  align-items: center;
+  font-size: 14px;
+}
+.ctl label {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+.ctl input[type="range"] {
+  max-width: 100%;
+  min-height: 32px;
+}
+.ctl input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+.select {
+  font: 12.5px var(--font-mono);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  padding: 4px 6px;
+  min-height: 32px;
+  background: var(--surface);
+  color: var(--ink);
+  max-width: 100%;
+}
+
+.textInput {
+  font: inherit;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  padding: 6px 8px;
+  min-height: 32px;
+  background: var(--surface);
+  color: var(--ink);
+  min-width: 0;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Byte fields: a row of chips, one per field, the current one lifted. */
+.bytes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0 6px;
+}
+.bf {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px;
+  border: 1.5px solid var(--bf, var(--line));
+  border-radius: 7px;
+  padding: 3px 6px;
+  opacity: 0.55;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+}
+.bf.on {
+  opacity: 1;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 0 var(--bf);
+}
+.bf b {
+  font: 600 10px var(--font-mono);
+  color: var(--muted);
+  margin-inline-end: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.bf i {
+  font: 600 12.5px var(--font-mono);
+  font-style: normal;
+  color: var(--ink);
+}
+.used {
+  font: 11px var(--font-mono);
+  color: var(--muted);
+  align-self: center;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bf {
+    transition: none;
+  }
+}
+
+/* The explanation under a diagram. */
+.field {
+  font-size: 14px;
+  margin: 4px 0 0;
+  min-height: 3em;
+}
+.field code {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+}
+
+.tableScroll {
+  overflow-x: auto;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.table th,
+.table td {
+  text-align: start;
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+.table th {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.chip {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 1px 8px;
+  border-radius: 5px;
+  color: var(--bg);
+}
+
+/* Wide diagrams scroll sideways on a phone instead of shrinking to unreadable text. */
+.scroll {
+  overflow-x: auto;
+  min-width: 0;
+}
+.scroll > svg,
+.scroll > canvas {
+  min-width: 560px;
+}

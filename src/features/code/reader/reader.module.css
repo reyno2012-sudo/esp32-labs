@@ -1,0 +1,402 @@
+/* The reader fills the viewport below the lesson bar, so the page itself never scrolls:
+   the code scrolls inside its pane, the explanation inside its panel. */
+.reader {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 10px;
+  height: clamp(480px, calc(100dvh - 24px), 1100px);
+  scroll-margin-top: 12px;
+  min-width: 0;
+}
+.reader[data-focus="true"] {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  height: 100dvh;
+  padding: max(10px, env(safe-area-inset-top)) max(var(--gutter), env(safe-area-inset-right))
+    max(10px, env(safe-area-inset-bottom)) max(var(--gutter), env(safe-area-inset-left));
+  background: var(--bg);
+  animation: rise 0.28s ease;
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+}
+
+.toolbar {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+/* The way back to the lab: always first, always visible. */
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font: 600 13px var(--font-mono);
+  color: var(--ink);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  padding: 6px 12px;
+  min-height: 38px;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+.back:hover {
+  border-color: var(--copper);
+  transform: translateX(calc(-2px * var(--dir)));
+}
+.fileName {
+  font: 600 13px var(--font-mono);
+  color: var(--muted);
+  max-width: 40vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.sideTitle {
+  margin: 0;
+  font: 600 12px var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.bar {
+  min-width: 0;
+}
+.count {
+  flex: 1;
+  margin: 0;
+  text-align: center;
+  font: 600 14px var(--font-mono);
+  color: var(--muted);
+}
+.dots li[data-opens] {
+  margin-inline-start: 8px;
+}
+
+/* Simple view: bigger targets, calmer chrome. */
+.reader[data-view="simple"] .primary,
+.reader[data-view="simple"] .secondary {
+  min-height: 48px;
+  padding-inline: 18px;
+  font-size: 14px;
+}
+.reader[data-view="simple"] .side {
+  border-color: var(--copper);
+}
+
+.modes,
+.tabs {
+  display: inline-flex;
+  padding: 3px;
+  gap: 2px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+}
+.modes button,
+.tabs button {
+  font: 600 12.5px var(--font-mono);
+  border: 0;
+  border-radius: 999px;
+  padding: 6px 12px;
+  min-height: 32px;
+  background: none;
+  color: var(--ink);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+.modes button[aria-pressed="true"] {
+  background: var(--copper);
+  color: var(--surface);
+}
+.tabs button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--surface);
+}
+.tools {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-inline-start: auto;
+}
+.level.wide {
+  display: none;
+}
+@media (min-width: 560px) {
+  .level.wide {
+    display: inline-flex;
+  }
+}
+.level,
+.icon {
+  font: 600 12px var(--font-mono);
+  color: var(--ink);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  padding: 6px 10px;
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  background: var(--surface);
+  cursor: pointer;
+}
+.level:hover,
+.icon:hover {
+  border-color: var(--copper);
+}
+.icon[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--surface);
+}
+
+/* Phone: code on top, the explanation as a sheet below it. Wide: side by side. */
+.body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 10px;
+  min-height: 0;
+}
+.codePane {
+  position: relative;
+  min-height: 0;
+}
+.side {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  max-height: 46dvh;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  overflow: hidden;
+}
+.body[data-sheet="closed"] .side {
+  max-height: none;
+}
+.body[data-sheet="closed"] .sideBody {
+  display: none;
+}
+.sideHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+}
+.handle {
+  margin-inline-start: auto;
+  font: 600 14px var(--font-mono);
+  color: var(--muted);
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  min-width: 36px;
+  min-height: 32px;
+  cursor: pointer;
+}
+.wide {
+  display: none;
+}
+@media (min-width: 560px) {
+  .wide {
+    display: inline;
+  }
+}
+.sideBody {
+  overflow: auto;
+  /* Sideways stays inside (no browser back-swipe); at the top or bottom the page takes over. */
+  overscroll-behavior-x: contain;
+  overscroll-behavior-y: auto;
+  padding: 14px;
+  min-height: 0;
+}
+@media (min-width: 900px) {
+  .body {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 380px);
+    grid-template-rows: minmax(0, 1fr);
+  }
+  .side {
+    max-height: none;
+  }
+  .handle {
+    display: none;
+  }
+  .body[data-sheet="closed"] .sideBody {
+    display: block;
+  }
+}
+
+/* A new word introduces itself in the corner of the code. */
+.pop {
+  position: absolute;
+  inset-block: auto 12px;
+  inset-inline: auto 12px;
+  max-width: min(320px, calc(100% - 24px));
+  background: var(--surface);
+  border: 1px solid var(--copper);
+  border-radius: var(--radius-m);
+  padding: 10px 12px;
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--ink) 18%, transparent);
+  animation: pop-in 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.3);
+  z-index: 2;
+}
+.pop p {
+  margin: 0;
+}
+.popText {
+  font-size: 13.5px;
+  margin-top: 4px !important;
+}
+.popActions {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+.popActions button {
+  font: 600 12px var(--font-mono);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  background: var(--surface);
+  color: var(--ink);
+  padding: 5px 9px;
+  min-height: 30px;
+  cursor: pointer;
+}
+.popActions button:first-child {
+  background: var(--copper);
+  border-color: var(--copper);
+  color: var(--surface);
+}
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+}
+
+.stepBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.dots {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0 4px;
+  min-width: 0;
+  overflow: hidden;
+}
+.dots li {
+  flex: 1;
+  min-width: 3px;
+  max-width: 36px;
+}
+.dots button {
+  display: block;
+  width: 100%;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: var(--line);
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    height 0.3s ease;
+}
+.dots button[data-seen] {
+  background: color-mix(in srgb, var(--copper) 45%, var(--line));
+}
+.dots button[aria-current="step"] {
+  background: var(--copper);
+  height: 12px;
+}
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font: 600 13px var(--font-mono);
+  border-radius: var(--radius-s);
+  padding: 9px 14px;
+  min-height: 42px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.primary {
+  background: var(--copper);
+  border: 1px solid var(--copper);
+  color: var(--surface);
+}
+.secondary {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+.primary:disabled,
+.secondary:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.barHint {
+  flex: 1;
+  margin: 0;
+  color: var(--muted);
+  font-size: 13.5px;
+}
+.done {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.done p {
+  margin: 0;
+}
+.doneActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.skeleton {
+  height: clamp(480px, calc(100dvh - 24px), 1100px);
+  border-radius: var(--radius-m);
+  border: 1px solid var(--line);
+  background: linear-gradient(100deg, var(--surface) 30%, var(--bg) 50%, var(--surface) 70%) 0 0 /
+    300% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+@keyframes shimmer {
+  to {
+    background-position: -150% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reader[data-focus="true"],
+  .skeleton,
+  .pop {
+    animation: none;
+  }
+}

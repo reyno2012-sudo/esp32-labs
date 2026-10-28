@@ -1,0 +1,153 @@
+.root {
+  display: grid;
+  gap: 8px;
+}
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.controls {
+  display: flex;
+  gap: 6px;
+}
+.controls button {
+  min-width: 44px;
+}
+.scroll {
+  overflow-x: auto;
+}
+.seq {
+  width: 100%;
+  min-width: 520px;
+  height: auto;
+  display: block;
+}
+.lane {
+  fill: var(--surface);
+  stroke: var(--line);
+  stroke-width: 1.2;
+}
+.laneLoop {
+  stroke: var(--ok);
+}
+.name {
+  font: 600 13px var(--font-display);
+  fill: var(--ink);
+}
+.sub {
+  font: 10.5px var(--font-mono);
+  fill: var(--muted);
+}
+.life {
+  stroke: var(--line);
+  stroke-dasharray: 4 4;
+}
+.msg {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 1.6;
+  stroke-dasharray: 5 4;
+}
+.net {
+  stroke-dasharray: none;
+}
+.head {
+  fill: var(--muted);
+}
+.label {
+  font: 11.5px var(--font-mono);
+  fill: var(--muted);
+}
+.num {
+  font: 600 11px var(--font-mono);
+  fill: var(--muted);
+}
+.row[data-state="next"] {
+  opacity: 0.28;
+}
+.row[data-state="now"] .msg {
+  stroke: var(--copper);
+  stroke-width: 2.4;
+}
+.row[data-state="now"] .label,
+.row[data-state="now"] .num {
+  fill: var(--ink);
+  font-weight: 600;
+}
+.dot {
+  fill: var(--copper);
+}
+.wait {
+  fill: var(--copper-soft);
+  stroke: var(--copper);
+  stroke-dasharray: 3 3;
+}
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+  margin: 0;
+  font: 11.5px var(--font-mono);
+  color: var(--muted);
+}
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-inline-end: 10px;
+}
+.swatch {
+  display: inline-block;
+  flex: none;
+  width: 18px;
+  height: 10px;
+  border-radius: 3px;
+}
+.lgMsg {
+  height: 2px;
+  background: var(--copper);
+}
+.lgWait {
+  width: 8px;
+  height: 14px;
+  background: var(--copper-soft);
+  border: 1px dashed var(--copper);
+}
+.lgLoop {
+  border: 1.5px solid var(--ok);
+  background: var(--surface);
+}
+.caption {
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+  display: grid;
+  gap: 6px;
+}
+.caption h4 {
+  margin: 0;
+  font: 650 16px var(--font-display);
+}
+.stepLine {
+  margin: 0;
+  font: 12px var(--font-mono);
+  color: var(--muted);
+}
+.text {
+  margin: 0;
+  max-width: 68ch;
+}
+.code {
+  margin: 0;
+  padding: 10px 12px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font: 12px/1.5 var(--font-mono);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  min-height: 4.5em;
+}

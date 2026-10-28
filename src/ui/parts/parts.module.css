@@ -1,0 +1,31 @@
+.icon {
+  display: inline-block;
+  flex: none;
+  overflow: visible;
+}
+/* Outlines keep one weight whatever a part's scale, like a pen line. */
+.ink {
+  stroke: var(--model-ink);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.casing {
+  fill: none;
+  stroke: var(--model-ink);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.wire {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.shadow {
+  fill: var(--model-shadow);
+  opacity: 0.16;
+}
+.glow {
+  pointer-events: none;
+}

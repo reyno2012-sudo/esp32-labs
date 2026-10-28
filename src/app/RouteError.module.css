@@ -1,0 +1,19 @@
+.box {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-inline-start: 4px solid var(--danger);
+  border-radius: var(--radius-l);
+  padding: 18px;
+  max-width: 60ch;
+}
+.box h2 {
+  font-family: var(--font-display);
+  font-weight: 750;
+  margin: 0 0 6px;
+}
+.code {
+  font: 600 12px var(--font-mono);
+  letter-spacing: 0.08em;
+  color: var(--danger);
+  margin: 0;
+}
