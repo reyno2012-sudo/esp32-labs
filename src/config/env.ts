@@ -10,7 +10,7 @@ const EnvSchema = z.object({
   VITE_REFERENCE_URL: z._default(z.string(), "./reference/"),
   VITE_LABS_SOURCE_URL: z._default(
     z.string().check(z.minLength(1)),
-    "https://github.com/agharsallah/esp-labs/tree/main/labs/",
+    "https://github.com/reyno2012-sudo/esp32-labs/blob/master/firmware-source/README.md",
   ),
   VITE_ON_VERCEL: z._default(z.string(), ""),
   VITE_LOG_LEVEL: z._default(z.enum(["debug", "info", "warn", "error", "silent"]), "info"),
