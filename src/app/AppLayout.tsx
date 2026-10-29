@@ -1,4 +1,5 @@
 /* eslint-disable i18next/no-literal-string -- literal text here is the repository name, not interface text. */
+import { useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { Link, Outlet, ScrollRestoration, useLocation, useNavigation } from "react-router";
 import { BenchPill } from "@/features/bench/BenchPill";
@@ -24,6 +25,7 @@ const SECTIONS = [
 
 /** A slim top bar, the page, and a footnote. Shared by every route. */
 export function AppLayout() {
+  const [supportOpen, setSupportOpen] = useState(false);
   const navigation = useNavigation();
   const { pathname } = useLocation();
   const { t } = useTranslation();
@@ -49,7 +51,7 @@ export function AppLayout() {
             <Icon name="chip" size={20} />
           </span>
           <span>
-            <span className={styles.eyebrow}>esp-labs</span>
+            <span className={styles.eyebrow}>Reyno Lab</span>
             <span className={styles.name}>
               <Trans
                 t={t}
@@ -87,7 +89,25 @@ export function AppLayout() {
       <p className={styles.foot}>
         {t("layout.footnote")} <Link to="/parts">{t("layout.partsLink")}</Link>{" · "}
         <a href="mailto:reyno@live.cn">{t("layout.contact", { email: "reyno@live.cn" })}</a>
+        {" · "}
+        <button type="button" className={styles.supportLink} onClick={() => setSupportOpen(true)}>
+          {t("layout.support")}
+        </button>
       </p>
+      {supportOpen ? (
+        <div className={styles.supportBackdrop} role="presentation" onMouseDown={(e) => e.target === e.currentTarget && setSupportOpen(false)}>
+          <section className={styles.supportDialog} role="dialog" aria-modal="true" aria-labelledby="support-title">
+            <button type="button" className={styles.supportClose} aria-label={t("layout.close")} onClick={() => setSupportOpen(false)}>×</button>
+            <p className={styles.supportKicker}>Reyno Lab</p>
+            <h2 id="support-title">{t("layout.supportTitle")}</h2>
+            <p className={styles.supportNote}>{t("layout.supportNote")}</p>
+            <div className={styles.qrGrid}>
+              <figure><img src="/support/wechat.png" alt={t("layout.wechatAlt")} /><figcaption>{t("layout.wechat")}</figcaption></figure>
+              <figure><img src="/support/alipay.png" alt={t("layout.alipayAlt")} /><figcaption>{t("layout.alipay")}</figcaption></figure>
+            </div>
+          </section>
+        </div>
+      ) : null}
       <BackToTop />
       <ScrollRestoration />
     </div>

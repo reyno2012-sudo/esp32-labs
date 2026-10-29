@@ -24,6 +24,14 @@
     "footnote": "Pin layout follows the Espressif DevKitC-1 v1.0. Clones are nearly identical, but the labels printed on your board always win. Your ticks are saved in this browser only.",
     "partsLink": "The parts library",
     "contact": "Contact: {{email}}",
+    "support": "Support Reyno Lab",
+    "supportTitle": "Buy the author a coffee",
+    "supportNote": "All experiments are free to learn. Tips are completely optional.",
+    "wechat": "WeChat Pay",
+    "alipay": "Alipay",
+    "wechatAlt": "WeChat Pay QR code",
+    "alipayAlt": "Alipay QR code",
+    "close": "Close",
     "new": "New"
   },
   "titles": {
