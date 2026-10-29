@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        A lab is one thing a beginner builds on the bench in an evening, with an ESP32-S3 DevKitC-1 and cheap parts. It has a firmware in [esp-labs](https://github.com/agharsallah/esp-labs) and a lesson here. Rough ideas are welcome: fill in what you know and leave the rest.
+        A lab is one thing a beginner builds on the bench in an evening, with an ESP32-S3 DevKitC-1 and cheap parts. It has a firmware in [esp-labs](https://github.com/reyno2012-sudo/esp32-labs) and a lesson here. Rough ideas are welcome: fill in what you know and leave the rest.
   - type: dropdown
     id: theme
     attributes:
@@ -75,7 +75,7 @@ body:
     id: help
     attributes:
       label: Can you help build it?
-      description: Not required. See [CONTRIBUTING.md](https://github.com/agharsallah/esp-labs-web/blob/main/CONTRIBUTING.md#add-a-lab) for how a lab comes together.
+      description: Not required. See [CONTRIBUTING.md](https://github.com/reyno2012-sudo/esp32-labs/blob/main/CONTRIBUTING.md#add-a-lab) for how a lab comes together.
       options:
         - label: I can write or test the firmware
         - label: I can write the lesson text

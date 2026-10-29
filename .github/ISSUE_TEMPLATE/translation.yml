@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Small fixes are often quicker as a pull request: every translation lives in `src/locales/<language>/` (see [Translate](https://github.com/agharsallah/esp-labs-web/blob/main/CONTRIBUTING.md#translate)). Code, commands, pin names and what the board prints stay in English on purpose.
+        Small fixes are often quicker as a pull request: every translation lives in `src/locales/<language>/` (see [Translate](https://github.com/reyno2012-sudo/esp32-labs/blob/main/CONTRIBUTING.md#translate)). Code, commands, pin names and what the board prints stay in English on purpose.
   - type: dropdown
     id: language
     attributes:
@@ -31,7 +31,7 @@ body:
     attributes:
       label: Link
       description: The page where you saw it. Copy the address bar.
-      placeholder: https://esp-labs-web.vercel.app/#/lessons/02?lang=de
+      placeholder: https://github.com/reyno2012-sudo/esp32-labs/#/lessons/02?lang=de
   - type: textarea
     id: current
     attributes:

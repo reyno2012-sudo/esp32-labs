@@ -4,7 +4,7 @@ This project follows the [Contributor Covenant, version 2.1](https://www.contrib
 
 ## Reporting
 
-If someone breaks it, use GitHub's **Report content** option on the comment, issue or pull request (it reaches GitHub and the maintainer), or contact the maintainer, [@agharsallah](https://github.com/agharsallah), privately. Reports are kept confidential.
+If someone breaks it, use GitHub's **Report content** option on the comment, issue or pull request (it reaches GitHub and the maintainer), or contact the maintainer, [@reyno2012-sudo](https://github.com/reyno2012-sudo), privately. Reports are kept confidential.
 
 ## Enforcement
 

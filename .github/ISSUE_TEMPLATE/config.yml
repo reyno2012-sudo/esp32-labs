@@ -1,11 +1,11 @@
 blank_issues_enabled: false
 contact_links:
   - name: Report a security vulnerability
-    url: https://github.com/agharsallah/esp-labs-web/security/advisories/new
+    url: https://github.com/reyno2012-sudo/esp32-labs/security/advisories/new
     about: Privately, never in a public issue. See SECURITY.md.
   - name: The board or the firmware misbehaves
-    url: https://github.com/agharsallah/esp-labs/issues
+    url: https://github.com/reyno2012-sudo/esp32-labs/issues
     about: Crashes, wrong pins, build or flash errors belong in the esp-labs repo.
   - name: Open the live guide
-    url: https://esp-labs-web.vercel.app
+    url: https://github.com/reyno2012-sudo/esp32-labs
     about: Check whether the problem still happens on the latest version.

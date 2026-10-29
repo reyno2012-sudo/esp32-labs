@@ -26,7 +26,7 @@ export function LabSourceLink({ cmd, className }: { cmd: string; className?: str
       </span>
       <span className={styles.text}>
         <span className={styles.title}>{t("source.title")}</span>
-        <span className={styles.path} dir="ltr">esp-labs / labs / {dir}</span>
+        <span className={styles.path} dir="ltr">Reyno Lab / firmware-source / labs / {dir}</span>
       </span>
       <span className={styles.go}>
         <Icon name="arrow" size={16} />

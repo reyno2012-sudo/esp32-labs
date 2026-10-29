@@ -1,4 +1,4 @@
-# esp-labs-web: rules for every change
+# Reyno Lab: rules for every change
 
 - Follow the official docs and current best practices. Read the local docs first: [docs-llm/react/llms.txt](docs-llm/react/llms.txt), then [docs-llm/react-router/llms.txt](docs-llm/react-router/llms.txt) and [docs-llm/tanstack-query/llms.txt](docs-llm/tanstack-query/llms.txt). When they don't cover something, or a version may have changed, search the web before deciding.
 - Keep code SOLID, modular and clean: pure logic in plain `.ts` modules, small components, one responsibility per file, contracts in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) (widgets, the three simulator rules, the lab-screen engine).

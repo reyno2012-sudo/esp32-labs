@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { labDirOfCommand, labSourceUrl } from "./lab-source";
 
-const BASE = "https://github.com/agharsallah/esp-labs/tree/main/labs/";
+const BASE = "https://github.com/reyno2012-sudo/esp32-labs/tree/main/labs/";
 
 describe("labSourceUrl", () => {
   it("points at the folder the command builds", () => {

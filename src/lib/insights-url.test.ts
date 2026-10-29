@@ -3,25 +3,25 @@ import { hashRouteUrl } from "./insights-url";
 
 describe("hashRouteUrl", () => {
   it("promotes the hash route to the path", () => {
-    expect(hashRouteUrl("https://esp-labs-web.vercel.app/#/lessons/R3")).toBe(
-      "https://esp-labs-web.vercel.app/lessons/R3",
+    expect(hashRouteUrl("https://reyno-lab.test/#/lessons/R3")).toBe(
+      "https://reyno-lab.test/lessons/R3",
     );
   });
 
   it("keeps the route's query string", () => {
-    expect(hashRouteUrl("https://esp-labs-web.vercel.app/#/lessons/R3?variant=v2")).toBe(
-      "https://esp-labs-web.vercel.app/lessons/R3?variant=v2",
+    expect(hashRouteUrl("https://reyno-lab.test/#/lessons/R3?variant=v2")).toBe(
+      "https://reyno-lab.test/lessons/R3?variant=v2",
     );
   });
 
   it("maps the home route to the root", () => {
-    expect(hashRouteUrl("https://esp-labs-web.vercel.app/#/")).toBe("https://esp-labs-web.vercel.app/");
+    expect(hashRouteUrl("https://reyno-lab.test/#/")).toBe("https://reyno-lab.test/");
   });
 
   it("leaves URLs without a hash route alone", () => {
-    expect(hashRouteUrl("https://esp-labs-web.vercel.app/")).toBe("https://esp-labs-web.vercel.app/");
-    expect(hashRouteUrl("https://esp-labs-web.vercel.app/#main")).toBe(
-      "https://esp-labs-web.vercel.app/#main",
+    expect(hashRouteUrl("https://reyno-lab.test/")).toBe("https://reyno-lab.test/");
+    expect(hashRouteUrl("https://reyno-lab.test/#main")).toBe(
+      "https://reyno-lab.test/#main",
     );
   });
 
