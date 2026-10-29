@@ -85,7 +85,8 @@ export function AppLayout() {
         <Outlet />
       </main>
       <p className={styles.foot}>
-        {t("layout.footnote")} <Link to="/parts">{t("layout.partsLink")}</Link>
+        {t("layout.footnote")} <Link to="/parts">{t("layout.partsLink")}</Link>{" · "}
+        <a href="mailto:reyno@live.cn">{t("layout.contact", { email: "reyno@live.cn" })}</a>
       </p>
       <BackToTop />
       <ScrollRestoration />
