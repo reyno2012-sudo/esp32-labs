@@ -14,11 +14,6 @@ ESP32-S3 互动指南：32 个实验、实时模拟器、开发板 3D 模型、�
 [![CI](https://github.com/agharsallah/esp-labs-web/actions/workflows/ci.yml/badge.svg)](https://github.com/agharsallah/esp-labs-web/actions/workflows/ci.yml)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-1f7a55)](CONTRIBUTING.md)
 
-[在线体验](https://esp-labs-web.vercel.app) ·
-[固件仓库](https://github.com/agharsallah/esp-labs) ·
-[项目架构](docs/ARCHITECTURE.md) ·
-[参与贡献](CONTRIBUTING.md) ·
-[反馈问题](https://github.com/agharsallah/esp-labs-web/issues/new?template=bug-report.yml)
 
 <img src="docs/media/labs-map.gif" alt="The labs map: a progress readout, the 3D ESP32-S3 DevKitC-1 with its parts lighting up one by one, then every lab grouped by theme" width="800">
 
