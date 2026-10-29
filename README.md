@@ -5,20 +5,20 @@
 **接线、烧录、观察，再读懂代码。**<br>
 ESP32-S3 互动指南：32 个实验、实时模拟器、开发板 3D 模型、引脚图、逐行固件讲解，以及更易读的数据手册。
 
-[![Open the live guide](https://img.shields.io/badge/open_the_live_guide-esp--labs--web.vercel.app-1f7a55?style=for-the-badge)](https://esp-labs-web.vercel.app)
+[![Open the live guide](https://img.shields.io/badge/open_the_live_guide-esp--labs--web.vercel.app-1f7a55?style=for-the-badge)](https://github.com/reyno2012-sudo/esp32-labs)
 
 [![React 19](https://img.shields.io/badge/React-19.3-149eca?logo=react&logoColor=white)](https://react.dev)
 [![TypeScript strict](https://img.shields.io/badge/TypeScript-6.0_strict-3178c6?logo=typescript&logoColor=white)](tsconfig.app.json)
 [![Vite 8](https://img.shields.io/badge/Vite-8.3-646cff?logo=vite&logoColor=white)](https://vite.dev)
 [![Chinese UI](https://img.shields.io/badge/interface-简体中文-b5651d)](docs/I18N.md)
-[![CI](https://github.com/agharsallah/esp-labs-web/actions/workflows/ci.yml/badge.svg)](https://github.com/agharsallah/esp-labs-web/actions/workflows/ci.yml)
+[![CI](https://github.com/reyno2012-sudo/esp32-labs/actions/workflows/ci.yml/badge.svg)](https://github.com/reyno2012-sudo/esp32-labs/actions/workflows/ci.yml)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-1f7a55)](CONTRIBUTING.md)
 
-[在线体验](https://esp-labs-web.vercel.app) ·
-[固件仓库](https://github.com/agharsallah/esp-labs) ·
+[在线体验](https://github.com/reyno2012-sudo/esp32-labs) ·
+[固件仓库](https://github.com/reyno2012-sudo/esp32-labs) ·
 [项目架构](docs/ARCHITECTURE.md) ·
 [参与贡献](CONTRIBUTING.md) ·
-[反馈问题](https://github.com/agharsallah/esp-labs-web/issues/new?template=bug-report.yml)
+[反馈问题](https://github.com/reyno2012-sudo/esp32-labs/issues/new?template=bug-report.yml)
 
 <img src="docs/media/labs-map.gif" alt="The labs map: a progress readout, the 3D ESP32-S3 DevKitC-1 with its parts lighting up one by one, then every lab grouped by theme" width="800">
 
@@ -46,13 +46,13 @@ Each lesson is one sheet: the goal, the pins it uses on a live pinout, the wirin
 
 ### 逐步讲解的代码阅读器
 
-**Read the code** opens the real firmware the lab flashes, taken from [esp-labs](https://github.com/agharsallah/esp-labs) at build time. **Tour** walks it a few lines at a time and asks you to guess first. **Story** follows the program as it runs, from `setup()` into every call. **Explore** explains any line you tap. New C++ words come up three at a time, and the phrasebook remembers the ones you've already met.
+**Read the code** opens the real firmware the lab flashes, taken from [esp-labs](https://github.com/reyno2012-sudo/esp32-labs) at build time. **Tour** walks it a few lines at a time and asks you to guess first. **Story** follows the program as it runs, from `setup()` into every call. **Explore** explains any line you tap. New C++ words come up three at a time, and the phrasebook remembers the ones you've already met.
 
 <p align="center"><img src="docs/media/code-reader.gif" alt="The code reader: tour stops with guess-first quizzes and new-word cards, then the Story mode following setup()" width="800"></p>
 
 ### 为动手实践设计的数据手册
 
-The new **Datasheet** section ([`#/datasheet`](https://esp-labs-web.vercel.app/#/datasheet)) is about the ESP32-S3 itself. **Explore** keeps the 10% of Espressif's documents a maker needs: the chip at a glance with a 3D dive from the board down to the die, every pin and its jobs, an atlas of all 32 peripheral blocks with a page each, and memory, clocks and power modes. Each fact cites its section of the reference, the "things that bite" are called out, and the blocks your labs have used light up as you tick steps.
+The new **Datasheet** section ([`#/datasheet`](https://github.com/reyno2012-sudo/esp32-labs/#/datasheet)) is about the ESP32-S3 itself. **Explore** keeps the 10% of Espressif's documents a maker needs: the chip at a glance with a 3D dive from the board down to the die, every pin and its jobs, an atlas of all 32 peripheral blocks with a page each, and memory, clocks and power modes. Each fact cites its section of the reference, the "things that bite" are called out, and the blocks your labs have used light up as you tick steps.
 
 A citation opens the corresponding reference section in a side reader, and **阅读** brings the board guide, module datasheet, chip datasheet and technical reference together as one book. Section titles and interface text are in Simplified Chinese; Espressif's source text remains unchanged.
 
@@ -77,7 +77,7 @@ A citation opens the corresponding reference section in a side reader, and **阅
 - **Meet the board**: the DevKitC-1 in 3D (three.js) with six callouts. Each one lights up its part and lists the labs that use it.
 - **The bench log**: what is flashed on the board right now and every command recorded. It is plain JSON in `public/data/`, so you can update it without a rebuild.
 - **Progress**: your ticks, the last lesson you opened and the variants you picked stay in your browser, with no account.
-- **The parts library** at [`#/parts`](https://esp-labs-web.vercel.app/#/parts): 42 isometric drawings of every component on the bench, coloured from design tokens only.
+- **The parts library** at [`#/parts`](https://github.com/reyno2012-sudo/esp32-labs/#/parts): 42 isometric drawings of every component on the bench, coloured from design tokens only.
 
 ## 实验路线
 
@@ -91,7 +91,7 @@ A citation opens the corresponding reference section in a side reader, and **阅
 | **Sound**         | S1 Hear → S8 Voice FX                                                                      | Loudness, clap control, a recorder, a spectrum, a speaker |
 | **Sensors**       | *planned*                                                                                  | Temperature, air and motion over I2C                    |
 
-The firmware for every lab is a standalone PlatformIO project in [esp-labs](https://github.com/agharsallah/esp-labs). Each lesson links to its folder on GitHub.
+The firmware for every lab is a standalone PlatformIO project in [esp-labs](https://github.com/reyno2012-sudo/esp32-labs). Each lesson links to its folder on GitHub.
 
 ## 快速开始
 
@@ -124,13 +124,13 @@ Contributions of every size are welcome. These need no React at all:
 
 | You want to…                          | Start here                                                                                                         |
 | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Report something broken               | [Bug report](https://github.com/agharsallah/esp-labs-web/issues/new?template=bug-report.yml)                       |
-| Suggest a lab or a theme              | [Lab proposal](https://github.com/agharsallah/esp-labs-web/issues/new?template=new-lab.yml)                        |
-| Fix or improve a translation          | [Translation issue](https://github.com/agharsallah/esp-labs-web/issues/new?template=translation.yml) or edit `src/locales/<lang>/` |
+| Report something broken               | [Bug report](https://github.com/reyno2012-sudo/esp32-labs/issues/new?template=bug-report.yml)                       |
+| Suggest a lab or a theme              | [Lab proposal](https://github.com/reyno2012-sudo/esp32-labs/issues/new?template=new-lab.yml)                        |
+| Fix or improve a translation          | [Translation issue](https://github.com/reyno2012-sudo/esp32-labs/issues/new?template=translation.yml) or edit `src/locales/<lang>/` |
 | Fix a typo or a confusing step        | Edit the lesson in `src/content/lessons/<track>.ts` and open a PR                                                  |
 | Add a lab, a simulator or a language  | [CONTRIBUTING.md](CONTRIBUTING.md): step by step, with the checks to run                                          |
 
-Issues labelled [`good first issue`](https://github.com/agharsallah/esp-labs-web/labels/good%20first%20issue) are a good place to start. Please read the [code of conduct](CODE_OF_CONDUCT.md); report security problems privately ([SECURITY.md](SECURITY.md)). How CI and the review rules work: [docs/MAINTAINING.md](docs/MAINTAINING.md).
+Issues labelled [`good first issue`](https://github.com/reyno2012-sudo/esp32-labs/labels/good%20first%20issue) are a good place to start. Please read the [code of conduct](CODE_OF_CONDUCT.md); report security problems privately ([SECURITY.md](SECURITY.md)). How CI and the review rules work: [docs/MAINTAINING.md](docs/MAINTAINING.md).
 
 ## Commands
 
@@ -170,7 +170,7 @@ Configuration is in `vercel.json` (Vite preset, pnpm, cache and security headers
 
 The code reader bundles the firmware source at build time. The included `firmware-source/` checkout is the default; CI and release workflows also fetch the current upstream firmware before building.
 
-**Deploy production from GitHub.** Merging to `main` does not deploy. When you want `main` live, run the [Deploy](.github/workflows/deploy.yml) workflow (Actions → **Deploy → Run workflow**, or `gh workflow run Deploy`). It checks that CI passed on `main`'s latest commit, checks it out with the firmware, runs `vercel build --prod` and uploads it. Then it tags the commit `vX.Y.Z` and publishes a [release](https://github.com/agharsallah/esp-labs-web/releases) with its notes: the version follows the PR titles since the last tag (`feat` bumps the minor, anything else the patch, a breaking change the major from 1.0.0), and the notes group them by kind with the live URL. It also removes preview deployments older than 30 days. It needs, once (see [docs/MAINTAINING.md](docs/MAINTAINING.md#production-deploys)): a `VERCEL_TOKEN` secret and the `VERCEL_ORG_ID` and `VERCEL_PROJECT_ID` variables.
+**Deploy production from GitHub.** Merging to `main` does not deploy. When you want `main` live, run the [Deploy](.github/workflows/deploy.yml) workflow (Actions → **Deploy → Run workflow**, or `gh workflow run Deploy`). It checks that CI passed on `main`'s latest commit, checks it out with the firmware, runs `vercel build --prod` and uploads it. Then it tags the commit `vX.Y.Z` and publishes a [release](https://github.com/reyno2012-sudo/esp32-labs/releases) with its notes: the version follows the PR titles since the last tag (`feat` bumps the minor, anything else the patch, a breaking change the major from 1.0.0), and the notes group them by kind with the live URL. It also removes preview deployments older than 30 days. It needs, once (see [docs/MAINTAINING.md](docs/MAINTAINING.md#production-deploys)): a `VERCEL_TOKEN` secret and the `VERCEL_ORG_ID` and `VERCEL_PROJECT_ID` variables.
 
 Preview deploys, and production from your machine if you need it:
 

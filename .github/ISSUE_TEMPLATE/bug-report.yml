@@ -6,13 +6,13 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time. A problem with what the **board** does (a crash, a wrong pin, a library) belongs in [esp-labs](https://github.com/agharsallah/esp-labs/issues). A problem with the **guide** (text, simulator, layout, code reader) belongs here.
+        Thanks for taking the time. A problem with what the **board** does (a crash, a wrong pin, a library) belongs in [esp-labs](https://github.com/reyno2012-sudo/esp32-labs/issues). A problem with the **guide** (text, simulator, layout, code reader) belongs here.
   - type: input
     id: link
     attributes:
       label: Link
       description: Copy the address bar. It carries the lesson, the tab and the language.
-      placeholder: https://esp-labs-web.vercel.app/#/lessons/R3?lang=en
+      placeholder: https://github.com/reyno2012-sudo/esp32-labs/#/lessons/R3?lang=en
     validations:
       required: true
   - type: dropdown
@@ -84,5 +84,5 @@ body:
     attributes:
       label: Before you send
       options:
-        - label: I searched the [open issues](https://github.com/agharsallah/esp-labs-web/issues) and this is not already there.
+        - label: I searched the [open issues](https://github.com/reyno2012-sudo/esp32-labs/issues) and this is not already there.
           required: true

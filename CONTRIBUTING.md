@@ -1,4 +1,4 @@
-# Contributing to esp-labs-web
+# Contributing to Reyno Lab
 
 Thanks for helping. This guide covers everything from a one-word typo fix to a brand-new lab. Small pull requests are welcome; you don't need to open an issue first for a typo, a broken link or an unclear step.
 
@@ -15,22 +15,22 @@ Thanks for helping. This guide covers everything from a one-word typo fix to a b
 
 | What                                                 | How                                                                                         |
 | ---------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| Something is broken or looks wrong                   | Open a [bug report](https://github.com/agharsallah/esp-labs-web/issues/new?template=bug-report.yml) with the link (it carries the lesson and language) and a screenshot |
-| You have an idea for a lab or a whole theme          | Open a [lab proposal](https://github.com/agharsallah/esp-labs-web/issues/new?template=new-lab.yml): the parts, what the learner builds, what they learn |
-| A translation reads badly                            | Open a [translation issue](https://github.com/agharsallah/esp-labs-web/issues/new?template=translation.yml), or edit `src/locales/<lang>/` directly |
+| Something is broken or looks wrong                   | Open a [bug report](https://github.com/reyno2012-sudo/esp32-labs/issues/new?template=bug-report.yml) with the link (it carries the lesson and language) and a screenshot |
+| You have an idea for a lab or a whole theme          | Open a [lab proposal](https://github.com/reyno2012-sudo/esp32-labs/issues/new?template=new-lab.yml): the parts, what the learner builds, what they learn |
+| A translation reads badly                            | Open a [translation issue](https://github.com/reyno2012-sudo/esp32-labs/issues/new?template=translation.yml), or edit `src/locales/<lang>/` directly |
 | A step is confusing or a fact is wrong               | Edit the lesson in `src/content/lessons/<track>.ts` and open a PR                           |
-| You want to build something                          | Pick an issue labelled [`good first issue`](https://github.com/agharsallah/esp-labs-web/labels/good%20first%20issue) or [`help wanted`](https://github.com/agharsallah/esp-labs-web/labels/help%20wanted), and say so in a comment |
+| You want to build something                          | Pick an issue labelled [`good first issue`](https://github.com/reyno2012-sudo/esp32-labs/labels/good%20first%20issue) or [`help wanted`](https://github.com/reyno2012-sudo/esp32-labs/labels/help%20wanted), and say so in a comment |
 
-The firmware lives in its own repo, [esp-labs](https://github.com/agharsallah/esp-labs). A problem with what the board itself does (a crash, a wrong pin, a library) belongs there. A problem with the guide (text, simulator, layout, code reader) belongs here.
+The firmware lives in its own repo, [esp-labs](https://github.com/reyno2012-sudo/esp32-labs). A problem with what the board itself does (a crash, a wrong pin, a library) belongs there. A problem with the guide (text, simulator, layout, code reader) belongs here.
 
 ## Set up
 
 You need Node 24.14+ and pnpm 11 (`corepack enable` picks the version pinned in `package.json`). Clone both repos side by side so the code reader can show the firmware:
 
 ```sh
-git clone https://github.com/agharsallah/esp-labs.git
-git clone https://github.com/agharsallah/esp-labs-web.git
-cd esp-labs-web
+git clone https://github.com/reyno2012-sudo/esp32-labs.git
+git clone https://github.com/reyno2012-sudo/esp32-labs.git
+cd Reyno Lab
 pnpm install
 pnpm dev        # http://localhost:5180
 ```
@@ -53,11 +53,11 @@ These are checked by `pnpm check` where a tool can check them. A reviewer checks
 
 ## Add a lab
 
-A lab has two halves: the firmware that runs on the board ([esp-labs](https://github.com/agharsallah/esp-labs)) and the lesson that teaches it (here). You can open the lesson PR first with `status: "planned"`, or after the firmware is merged.
+A lab has two halves: the firmware that runs on the board ([esp-labs](https://github.com/reyno2012-sudo/esp32-labs)) and the lesson that teaches it (here). You can open the lesson PR first with `status: "planned"`, or after the firmware is merged.
 
 ### 1. The firmware, in esp-labs
 
-Follow [esp-labs: Adding a lab](https://github.com/agharsallah/esp-labs#adding-a-lab): a `labs/<lab>/` PlatformIO project with `extra_configs = ../../common.ini`, shared code in `kit/lib/`, an entry in `labs.json` and a README.
+Follow [esp-labs: Adding a lab](https://github.com/reyno2012-sudo/esp32-labs#adding-a-lab): a `labs/<lab>/` PlatformIO project with `extra_configs = ../../common.ini`, shared code in `kit/lib/`, an entry in `labs.json` and a README.
 
 ### 2. The lesson, here
 
@@ -91,7 +91,7 @@ Follow [esp-labs: Adding a lab](https://github.com/agharsallah/esp-labs#adding-a
 6. **Optional**: a hand-written code tour in `src/content/code/tours.ts` (stops anchored by text in the firmware; the content test checks the anchors). Without one, the reader builds an automatic tour from the code's own comments.
 7. **Check it** ([below](#before-you-open-a-pull-request)), open the lesson at `#/lessons/S9` at desktop and phone width, and open its **Read the code** tab.
 
-A new **track** also needs an entry in `TRACKS`, a lessons file, a loader in `src/content/queries.ts`, a `src/labs/<track>/widgets.ts` spread into `src/widgets/registry.ts`, a colour token in `tokens.css` and a `TRACK_PART`. Open a [lab proposal](https://github.com/agharsallah/esp-labs-web/issues/new?template=new-lab.yml) first so we can agree on the theme.
+A new **track** also needs an entry in `TRACKS`, a lessons file, a loader in `src/content/queries.ts`, a `src/labs/<track>/widgets.ts` spread into `src/widgets/registry.ts`, a colour token in `tokens.css` and a `TRACK_PART`. Open a [lab proposal](https://github.com/reyno2012-sudo/esp32-labs/issues/new?template=new-lab.yml) first so we can agree on the theme.
 
 ## Add a simulator or explainer
 

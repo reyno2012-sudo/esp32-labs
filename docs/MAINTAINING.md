@@ -1,4 +1,4 @@
-# Maintaining esp-labs-web
+# Maintaining Reyno Lab
 
 What runs on every pull request, what protects `main`, and the repository settings that the files in `.github/` rely on.
 
@@ -24,8 +24,8 @@ Every third-party action is pinned to a full commit SHA (Dependabot keeps the pi
 Apply it once, and again after you edit the file (replace `<id>` with the id the first command printed):
 
 ```sh
-gh api -X POST repos/agharsallah/esp-labs-web/rulesets --input .github/rulesets/main.json --jq .id
-gh api -X PUT repos/agharsallah/esp-labs-web/rulesets/<id> --input .github/rulesets/main.json
+gh api -X POST repos/reyno2012-sudo/esp32-labs/rulesets --input .github/rulesets/main.json --jq .id
+gh api -X PUT repos/reyno2012-sudo/esp32-labs/rulesets/<id> --input .github/rulesets/main.json
 ```
 
 ## Repository settings
@@ -33,7 +33,7 @@ gh api -X PUT repos/agharsallah/esp-labs-web/rulesets/<id> --input .github/rules
 These live on GitHub, not in the repo. Apply them once with `gh`:
 
 ```sh
-R=repos/agharsallah/esp-labs-web
+R=repos/reyno2012-sudo/esp32-labs
 
 # Fork PRs from anyone outside the repo wait for your approval before any workflow runs.
 gh api -X PUT $R/actions/permissions/fork-pr-contributor-approval -f approval_policy=all_external_contributors
@@ -71,7 +71,7 @@ Undo a bad release by promoting the previous production deployment in Vercel (In
 It reads, once:
 
 ```sh
-R=agharsallah/esp-labs-web
+R=reyno2012-sudo/esp32-labs
 # The production environment, deployable from main only. It holds the token.
 gh api -X PUT repos/$R/environments/production --input - <<'JSON'
 { "deployment_branch_policy": { "protected_branches": false, "custom_branch_policies": true } }
@@ -89,7 +89,7 @@ A secret set on the environment, rather than on the repository, is readable only
 [`.github/rulesets/release-tags.json`](../.github/rulesets/release-tags.json) keeps released `v*` tags from being moved or deleted (admins can bypass). Apply it once, as for `main`:
 
 ```sh
-gh api -X POST repos/agharsallah/esp-labs-web/rulesets --input .github/rulesets/release-tags.json --jq .id
+gh api -X POST repos/reyno2012-sudo/esp32-labs/rulesets --input .github/rulesets/release-tags.json --jq .id
 ```
 
 ## When it gets noisy
@@ -97,7 +97,7 @@ gh api -X POST repos/agharsallah/esp-labs-web/rulesets --input .github/rulesets/
 - **A wave of spam PRs or comments**: Settings → Moderation options → Interaction limits restricts issues, PRs and comments to prior contributors or collaborators for 24 hours up to 6 months:
 
   ```sh
-  gh api -X PUT repos/agharsallah/esp-labs-web/interaction-limits -f limit=existing_users -f expiry=one_week
+  gh api -X PUT repos/reyno2012-sudo/esp32-labs/interaction-limits -f limit=existing_users -f expiry=one_week
   ```
 
 - **One account**: block it from your profile (Settings → Moderation → Blocked users), or report it to GitHub from the ⋯ menu on its comment.

@@ -4,7 +4,7 @@
 
 **Goal:** 在当前工作区交付上游 ESP Labs 网站的完整简体中文单语言版本，保留全部 UI、路由、交互和浏览器本地状态。
 
-**Architecture:** 以 `agharsallah/esp-labs-web` 上游 React/Vite 应用为实现基线，先导入源码及公开数据，再在其既有 i18n、路由、设计 token 和组件边界上固定简体中文。保持 hash 路由与静态部署方式；通过上游已有测试、检查命令及生产构建验证整站。
+**Architecture:** 以 `reyno2012-sudo/esp32-labs` 上游 React/Vite 应用为实现基线，先导入源码及公开数据，再在其既有 i18n、路由、设计 token 和组件边界上固定简体中文。保持 hash 路由与静态部署方式；通过上游已有测试、检查命令及生产构建验证整站。
 
 **Tech Stack:** React 19、TypeScript、Vite、React Router（hash 路由）、i18next、TanStack Query、CSS Modules、Three.js、pnpm 11.10.0。
 
@@ -30,7 +30,7 @@
 
 - [ ] **Step 1: 获取上游源码**
 
-从 `https://github.com/agharsallah/esp-labs-web` 的 `main` 分支导入整个仓库到当前空工作区，保留其原始提交历史（若环境允许）。不要覆盖已存在的 `docs/superpowers/` 文件；导入前确认工作区目标仅含 `.git/` 与本计划/规格文档。
+从 `https://github.com/reyno2012-sudo/esp32-labs` 的 `main` 分支导入整个仓库到当前空工作区，保留其原始提交历史（若环境允许）。不要覆盖已存在的 `docs/superpowers/` 文件；导入前确认工作区目标仅含 `.git/` 与本计划/规格文档。
 
 - [ ] **Step 2: 核对应用脚本与目录**
 
