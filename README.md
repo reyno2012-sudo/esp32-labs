@@ -153,7 +153,7 @@ Copy `.env.example` to `.env` to override:
 | ---------------------- | ----------------------------------------------------- | ------------------------------------------------------------- |
 | `VITE_BENCH_DATA_URL`  | `./data/`                                             | Where `bench-status.json` and `bench-log.json` are read       |
 | `VITE_FIRMWARE_URL`    | `./firmware/`                                         | Where the bundled lab code is read                            |
-| `VITE_LABS_SOURCE_URL` | `https://github.com/agharsallah/esp-labs/tree/main/labs/` | Where each lesson's "code on GitHub" link points          |
+| `VITE_LABS_SOURCE_URL` | `https://github.com/reyno2012-sudo/esp32-labs/blob/master/firmware-source/README.md` | Target of the lesson's GitHub code link |
 | `VITE_LOG_LEVEL`       | `info`                                                | `debug`, `info`, `warn`, `error` or `silent`                  |
 | `FIRMWARE_DIR`         | `./firmware-source`                                   | Build time only: firmware source shown by the code reader      |
 | `REFERENCE_FILE`       | `docs-llm/esp32-s3/ESP32-S3_REFERENCE.md`             | Build time only: Espressif's reference (with its `images/`) for the datasheet reader and book; absent, they are off |
