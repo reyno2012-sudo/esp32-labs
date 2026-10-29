@@ -167,6 +167,54 @@
   color: var(--muted);
   margin: 0;
 }
+.supportLink {
+  border: 0;
+  padding: 0;
+  background: none;
+  color: var(--copper);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.supportBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgb(16 24 32 / 62%);
+  backdrop-filter: blur(4px);
+}
+.supportDialog {
+  position: relative;
+  width: min(680px, 100%);
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--surface);
+  box-shadow: 0 24px 80px rgb(0 0 0 / 28%);
+  text-align: center;
+}
+.supportClose {
+  position: absolute;
+  inset-block-start: 12px;
+  inset-inline-end: 16px;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+.supportKicker { margin: 0 0 5px; color: var(--copper); font: 700 12px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
+.supportDialog h2 { margin: 0; font: 800 26px var(--font-display); }
+.supportNote { max-width: 450px; margin: 10px auto 24px; color: var(--muted); line-height: 1.6; }
+.qrGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.qrGrid figure { margin: 0; padding: 12px; border: 1px solid var(--line); border-radius: 16px; background: var(--paper, #fff); }
+.qrGrid img { display: block; width: 100%; aspect-ratio: 1; object-fit: contain; border-radius: 10px; }
+.qrGrid figcaption { margin-top: 10px; color: var(--ink); font: 700 13px var(--font-mono); }
+@media (max-width: 559px) { .supportDialog { padding: 26px 16px 18px; } .qrGrid { gap: 10px; } }
 
 /* "New" next to a section that just shipped; a dot when the bar shows icons only. */
 .newBadge {
