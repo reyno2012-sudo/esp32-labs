@@ -103,7 +103,7 @@ export function AppLayout() {
             <p className={styles.supportNote}>{t("layout.supportNote")}</p>
             <div className={styles.qrGrid}>
               <figure><img src="/support/wechat.png" alt={t("layout.wechatAlt")} /><figcaption>{t("layout.wechat")}</figcaption></figure>
-              <figure><img src="/support/alipay.png" alt={t("layout.alipayAlt")} /><figcaption>{t("layout.alipay")}</figcaption></figure>
+              <figure><img src="/support/alipay.jpg" alt={t("layout.alipayAlt")} /><figcaption>{t("layout.alipay")}</figcaption></figure>
             </div>
           </section>
         </div>
