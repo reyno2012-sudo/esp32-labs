@@ -1,0 +1,16 @@
+.intro { position:fixed; inset:0; z-index:1000; background:#061722 url('/intro/tunnel-first-frame.jpg') center / cover no-repeat; color:#f4ecd9; }
+.scene { position:absolute; inset:0; }
+.backgroundVideo { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; pointer-events:none; }
+.contactShadow { position:absolute; left:51%; top:calc(66% + 2cm); width:19%; height:4%; transform:translate(-50%,-50%) rotate(12deg); background:radial-gradient(ellipse, #0009, transparent 70%); pointer-events:none; }
+.enter { position:absolute; inset:0; width:100%; height:100%; border:0; padding:0; background:linear-gradient(180deg, #03131b80, transparent 35%, #03131bbd); color:inherit; cursor:pointer; text-align:center; text-shadow:0 2px 12px #000; }
+.brand { position:absolute; top:7%; left:50%; transform:translateX(-50%); width:max-content; max-width:calc(100% - 32px); box-sizing:border-box; font-family:'JetBrains Mono','Fira Code',monospace; font-size:13px; font-weight:500; letter-spacing:.25em; color:#e2e8f0; padding:6px 16px; background:rgba(15,23,42,.4); border:1px solid rgba(56,189,248,.2); border-radius:999px; backdrop-filter:blur(6px); box-shadow:0 0 15px rgba(56,189,248,.15); text-shadow:none; }
+.slash { color:#f59e0b; margin:0 4px; }
+.model { color:#38bdf8; }
+.caption { position:absolute; bottom:10%; left:20px; right:20px; display:grid; gap:18px; }
+.caption strong { font-family:'HarmonyOS Sans SC','MiSans','PingFang SC',sans-serif; font-weight:300; font-size:clamp(22px,4vw,32px); letter-spacing:.18em; background:linear-gradient(180deg,#fff 0%,#cbd5e1 65%,#64748b 100%); background-clip:text; -webkit-background-clip:text; color:transparent; -webkit-text-fill-color:transparent; text-shadow:none; filter:drop-shadow(0 4px 24px rgba(56,189,248,.4)); }
+.caption > span { font-family:'HarmonyOS Sans SC','PingFang SC',sans-serif; font-size:13px; font-weight:400; letter-spacing:.35em; color:rgba(186,230,253,.75); text-shadow:0 0 10px rgba(56,189,248,.5); animation:pulse-glow 2.5s infinite ease-in-out; }
+@keyframes pulse-glow { 0%,100% { opacity:.35; transform:scale(.99); } 50% { opacity:.95; transform:scale(1); } }
+@media(prefers-reduced-motion:reduce) { .caption > span { animation:none; opacity:.95; } }
+.sound { position:absolute; right:24px; top:24px; display:grid; place-items:center; width:48px; height:48px; border:1px solid #f4cc8270; border-radius:50%; padding:0; background:#061722cc; color:inherit; cursor:pointer; }
+.sound:focus-visible { outline:2px solid #f4cc82; outline-offset:4px; }
+@media(max-width:600px) { .brand{top:12%;} .caption{bottom:12%;} }

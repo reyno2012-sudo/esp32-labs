@@ -45,6 +45,7 @@ export const PART_ANCHORS: Record<PartId, readonly [number, number, number]> = {
 };
 
 export interface BoardScene {
+  readonly root: Three.Group;
   /** Glow one part (the callout you are on), or none. */
   highlight(part: PartId | null): void;
   /** The module's metal can, for scenes that take the board apart (the chip descent). */
@@ -58,7 +59,7 @@ export interface BoardScene {
 
 type Toon = Three.MeshToonMaterial;
 
-export function buildBoardScene(T: ThreeModule, S: Stage3d): BoardScene {
+export function buildBoardScene(T: ThreeModule, S: Pick<Stage3d, "scene" | "reduce" | "onFrame">, options: { blinkLed?: boolean } = {}): BoardScene {
   const C = colours();
   const board = new T.Group();
   S.scene.add(board);
@@ -215,6 +216,11 @@ export function buildBoardScene(T: ThreeModule, S: Stage3d): BoardScene {
     ledMat.emissive.copy(led);
     glowMat.color.copy(led);
     glow.scale.setScalar(lit === "rgb" ? 1.9 : 1.3);
+    if (options.blinkLed) {
+      const on = S.reduce || t % 1.4 < .7;
+      ledMat.emissiveIntensity = on ? 1.2 : .015;
+      glowMat.opacity = on ? 1 : 0;
+    }
     waves.forEach(({ ring, m }, i) => {
       if (S.reduce) {
         m.opacity = lit === "antenna" ? 0.5 : 0;
@@ -237,6 +243,7 @@ export function buildBoardScene(T: ThreeModule, S: Stage3d): BoardScene {
   S.onFrame(frame);
 
   return {
+    root: board,
     highlight(part) {
       lit = part;
     },
