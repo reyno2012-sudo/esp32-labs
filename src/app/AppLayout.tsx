@@ -1,5 +1,6 @@
 /* eslint-disable i18next/no-literal-string -- literal text here is the repository name, not interface text. */
 import { useState } from "react";
+import { Intro } from "./Intro";
 import { Trans, useTranslation } from "react-i18next";
 import { Link, Outlet, ScrollRestoration, useLocation, useNavigation } from "react-router";
 import { BenchPill } from "@/features/bench/BenchPill";
@@ -25,12 +26,14 @@ const SECTIONS = [
 
 /** A slim top bar, the page, and a footnote. Shared by every route. */
 export function AppLayout() {
+  const [introOpen, setIntroOpen] = useState(true);
   const [supportOpen, setSupportOpen] = useState(false);
   const navigation = useNavigation();
   const { pathname } = useLocation();
   const { t } = useTranslation();
   return (
     <div className={styles.wrap}>
+      {introOpen ? <Intro onEnter={() => setIntroOpen(false)} /> : null}
       {/* The hash router owns location.hash, so the skip link moves focus itself. */}
       <a
         className={styles.skip}

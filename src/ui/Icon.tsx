@@ -58,6 +58,8 @@ const PATHS = {
   size: "M4 7l8-4 8 4-8 4zM4 12l8 4 8-4M4 17l8 4 8-4",
   time: `${o(12, 12, 9)}M12 7v5l3 2`,
   power: "M12 3v8M7 6.5a7 7 0 1 0 10 0",
+  volumeOn: "M11 4L6 8H3v8h3l5 4zM15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14",
+  volumeOff: "M11 4L6 8H3v8h3l5 4zM16 9l6 6M22 9l-6 6",
   pin: "M9 3h6v4H9zM12 7v14M8 21h8",
   warning: "M12 3l10 18H2zM12 10v5M12 18v.5",
 } as const;

@@ -4,3 +4,11 @@ docs-llm
 .env
 .env.*
 !.env.example
+intro-preview.png
+tools/intro-check.cjs
+tools/intro-font.mjs
+public/intro/*.woff2
+public/intro/font-source.css
+public/intro/music.mp3
+public/intro/reference-audio.mp4
+public/intro/tunnel-video.mp4
